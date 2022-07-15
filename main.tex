@@ -39,10 +39,13 @@
 \begin{document}
 %
 % タイトルと著者名
-\title{新入社員課題報告書\\[2mm]新社屋屋上室外機における\\散水システム導入および比較検討} % 和文タイトル
-\name{○高橋 京佑 (FTE プラント設計部), 2022年新入社員 技術配属者一同} % 著者名
-\etitle{} % 英文タイトル
-\ename{\small○KEISUKE Takahashi (FoodTechnoEngineering)}	%著者名（英）
+\title{FTE新入社員課題報告書\\[2mm]社屋屋上室外機における\\散水システム導入および比較検討} % 和文タイトル
+\name{○高橋 京佑, 小坂 丞, 仲野 茂翠, 設樂 日和, 𠮷岡 拓海, 渡辺 夏芽, 
+\\中村 天音, 塚田 浩貴, 青木 昇, 吉川 唯希, 阪田 悠} % 著者名
+
+\etitle{FTE company building rooftop condensing unit watering system} % 英文タイトル
+\ename{\small○KEISUKE Takahashi, TASUKU Kosaka, MOTOAKI Nakano, HINOWA Shidara, TAKUMI Yoshioka, NATSUME Watanabe, \\
+AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, YU Sakata}	%著者名（英）
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % アブストラクト
 \abst
@@ -60,43 +63,102 @@ for crop growth and pest invasion. The introduction of multi-spectral sensors wi
 2021年の大阪府の年間平均気温は1883年に比べ2.5℃上昇している\cite{temp_osaka}. 
 さらに, 2021年の真夏日と猛暑日の合計日数は, 2014年の65日に比べ13日増加, 
 猛暑日に関しては8日増加しており\cite{temp_osaka2}, 1880年からの真夏日および
-猛暑日の長期的推移を見ると増加傾向である\cite{temp_osaka3}. 
+猛暑日の長期的推移を見ると増加傾向である (\figref{fig1:temp_osaka}). 
 
+\begin{figure*}[tb]
+  \centering
+  \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE30_2021.png}
+      \subcaption{大阪 真夏日}
+      \label{subfig1:temp_osaka}
+    \end{minipage}
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE35_2021.png}
+      \subcaption{大阪 猛暑日}
+      \label{subfig1:temp_osaka2}
+    \end{minipage}
+    \caption{真夏日および猛暑日の年間日数 1883-2021年\cite{temp_osaka3}}
+    \label{fig1:temp_osaka}
+\end{figure*}
+ 
+
+空調および冷凍分野において空気を冷やす原理として, "冷凍サイクル" が挙げられる. 
+\figref{fig1:cycle}に示す通り, 冷凍サイクルは 「圧縮」「凝縮」「膨張」「蒸発」 
+の4行程で構成されている. 冷凍サイクルにおいてモリエル線図(\figref{fig1:ph_r410}) 
+は使用する冷媒の状態変化に伴う運転状況の変化, 装置能力, 装置動力などの計算に
+よく使用される. 
+上記に示した気温上昇に伴い, 今後は空調機の利用機会が増えると予想できる. 一般に
+空調機には室内機 (別称: クーラー) と室外機 (別称: 冷凍機) に分類されており, 
+冷房時において室外機では「圧縮」と「凝縮」, 室内機では「蒸発」と「膨張」の行程を
+それぞれ担っている. 室外機は高圧化した冷媒ガスを外気に熱を伝達することにより凝縮させ, 
+室内機では, 膨張した冷媒液を室内の空気と熱交換させて冷媒の潜熱を利用して冷却する. 
+
+\begin{figure}[tb]
+  \centering
+      \includegraphics[width=\linewidth]{img/cycle-2.png}
+      \caption{冷凍サイクル}
+      \label{fig1:cycle}
+\end{figure}
 
 \begin{figure}[tb]
     \centering
-    \begin{minipage}[b]{\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE30_2021.png}
-      \subcaption{真夏日}
-      \label{subfig1:temp_osaka}
-    \end{minipage}\\
-    \begin{minipage}[b]{\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE35_2021.png}
-      \subcaption{猛暑日}
-      \label{subfig1:temp_osaka2}
-    \end{minipage}
-    \caption{大阪府気温推移}
-    \label{fig1:temp_osaka}
+        \includegraphics[width=\linewidth]{img/ph線図.jpg}
+        \caption{モリエル線図(p-h 線図) 冷媒:R410}
+        \label{fig1:ph_r410}
 \end{figure}
+
+ここで, 室外機吸い込み側空気, つまり外気温度が上昇すると, それに付随して凝縮温度
+が高くなる. それにより冷却能力は小さくなり, 圧縮機駆動の駆動力が大きくなるため, 
+成績係数が小さくなる. したがって, 同じ冷凍能力を出すためには消費電力が大きくなる.  
+実際に外気温30℃, 相対湿度50\%の環境下で簡易的に10分おきにバケツにて散水をしながら
+電力量を計測した. その対照実験の計測環境は\tableref{table:ex1}のとおりである. 
+
+\begin{table}[tbh]
+  \caption{計測環境}
+  \label{table:ex1}
+  \centering
+  \begin{tabular}{lcccc}
+     & 外気温 & 湿度 & 設定温度 & 気候 \\
+    \hline \hline
+    実験1 & 34.3 & 48.0 & 27 & 晴れ  \\
+    実験2 & 32.9 & 58.9 & 27 & 曇り \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\figref{fig1:compare_watering}に示すように, 実験1の電力量は散水をしていない場合のようになる. 
+
+% 7/13(散水なし)と7/15(散水あり)の比較
+\begin{figure*}[tb]
+  \centering
+      \includegraphics[width=0.9\linewidth]{img/ex1.png}
+      \caption{散水の有無による電力量の比較}
+      \label{fig1:compare_watering}
+\end{figure*}
+
+
+\begin{table*}[tbh]
+  \caption{エアコン冷房時 電気代}
+  \label{table:aircon}
+  \centering
+  \begin{tabular}{lrrrr}
+    エアコン6畳タイプ & 最小消費電力 & 最大消費電力 & 期間消費電力量 & 1時間の電気代 \\
+     & [W] & [W] & [Wh] & [円] \\
+    \hline \hline
+    DAIKIN AN22YRS-W & 115 & 960 & 630 & 17.0 \\
+    Panasonic CU-X221D & 110 & 920 & 586 & 15.8 \\
+    SHARP AY-N22X & 130 & 810 & 578 & 15.6 \\
+    三菱電機　MSZ-ZW2221 & 105 & 850 & 594 & 16.0 \\
+    日立　RAC-X22L & 115 & 880 & 555 & 15.0 \\
+    \hline
+  \end{tabular}
+\end{table*}
 
 
 \subsection{目的}\label{purpose}
-% \subsecref{background} で前述した「スペクトルライブラリ」構築のため, \figref{fig:spectrum}のようにUAVを測定対象を全方位から撮影できるよう飛行させる必要がある. 
-% その際に測定対象周辺に基準マーカーを配置し, カメラでスペクトル計測時もしくは経路移動中常に計測対象とマーカーを同時に捉えておくことで正確に計測対象を撮影できると考えた. 
 
-% 現在, 指定された経路に従ってUAVが移動するためには, Way Point (以下，WP)を設定し, GPSの情報を利用してWP上を移動する方法が一般的である\cite{WP}. 
-% しかしながら, GPSベースのWPナビゲーションによる飛行はGPS受信数が多い環境である上に，計測対象の正確な緯度・経度情報をUAVに対して指示する必要があり, そのオペレーションは煩雑である．
-% 従って，本研究では誰でも使いやすいシステムによってスペクトルライブラリを構築するために，基準マーカー(Fiducial Marker, マーカー)を測定対象周辺に設置することによる
-% 飛行精度を向上させる手法を考察することを目的とする. 
-
-% \begin{figure}[tb]
-%     \centering
-%         \includegraphics[width=\linewidth]{img/asset5.jpg}
-%         \caption{太陽 - 計測対象 - センサ(UAV)の位置関係}
-%         \label{fig:spectrum}
-% \end{figure}
 
 \section{調査内容}\label{sec2}
 
@@ -123,40 +185,11 @@ for crop growth and pest invasion. The introduction of multi-spectral sensors wi
 
 \subsection{実験3: AprilTagの位置精度の検証}\label{subsec:ex3}
 
-\begin{table}[h]
-\caption{AprilTagの位置精度}
-\label{table:tag_pos}
-\centering
-\begin{tabular}{lrrrrr}
-    & 実験3-1 & 実験3-2 \\
-    \hline \hline
-    Tag0 & 76.88\% & 97.22\% \\
-    Tag1 & 73.03\% & 95.05\% \\
-    Tag2 & 82.87\% & 91.30\% \\
-    Tag3 & 75.00\% & 87.33\% \\
-    \hline
-\end{tabular}
-\end{table}
-
-
 \section{考察}
 
 
 \section{結論}
 
-\section{緒言}
-本稿では SICE SI 部門講演会 SI2021 の予稿原稿を作成するための説明を行います．
-SI2021では予稿原稿としてPDFファイル形式のファイルを電子投稿していただくことを原則とさせていただいております．
-ただし，電子化やネットワーク接続が困難な場合には個別に対応させていただきますので，プログラム委員会までご相談ください(Webサイトからお問い合わせできます)．
-%
-\section{原稿作成方法}
-\subsection{原稿枚数，ファイル形式とファイル容量}
-原稿は1講演につき1ページから最大6ページとなります（キーノート講演も同様です）．
-提出していただく原稿のファイル形式は原則としてPDF形式といたします．
-PDF形式とすることが不可能な場合には，プログラム委員会にご連絡ください．
-また，原稿完成時のファイルサイズはPDF形式で2MB程度を上限の目安とさせていただきます．
-原稿送付時にはそれ以上でも受付可能な場合がありますが，その場合には全体の原稿の総容量により再提出をお願いする場合がありますので，ご了承ください．
-%
 \subsection{用紙サイズ，書式など}
 \subsubsection{原稿の体裁}
 用紙サイズはA4版(縦297mm$\times$横210mm)とし，余白部分は左右15mm，上20mm，下27mmを確保してください．（プログラム委員会でヘッダ・フッダ部分に情報を追加する予定ですので，ご注意ください．）
@@ -179,11 +212,6 @@ PDF形式とすることが不可能な場合には，プログラム委員会�
 予稿はPDFファイルとなりますので，図や表はカラーで作成していただいても構いません．
 ただしファイルサイズの制限にご注意ください．
 図のキャプションは図の下にFig.1，Fig.2という具合に，表のキャプションは表の上にTable 1，Table 2という具合にお付けください．（英語表記，フォントは10pt Times-Roman推奨）
-%
-\section{結言}
-本稿はあくまでも予稿原稿を作成するためのガイドラインを示したものです．改行幅やフォントの設定などについては，原稿の内容や量に合わせて適宜判断していただき，原稿を作成してください．
-また，本稿はSICE-SI2021の予稿原稿の書き方\cite{SI2021}を参考に，\TeX 用書式を用意したものです．適宜sice-si.styを変更して使用してください．
-
 
 %参考文献
 \begin{thebibliography}{99}
