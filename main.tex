@@ -27,11 +27,20 @@
 % 節番号の後調整
 \newcommand{\subsecref}[1]{\ref{#1}\hspace{0.2zw} 節}
 
+% 画像挿入テンプレ
+% \begin{figure}[tb]
+%     \centering
+%         \includegraphics[width=\linewidth]{img/〇〇〇〇.jpg}
+%         \caption{キャプション}
+%         \label{ラベリング}
+% \end{figure}
+
+
 \begin{document}
 %
 % タイトルと著者名
-\title{新入社員レポート\\新社屋屋上室外機における\\散水システム導入の比較検討} % 和文タイトル
-\name{○高橋 京佑 (FTE プラント設計部), FTE新入社員一同} % 著者名
+\title{新入社員課題報告書\\[2mm]新社屋屋上室外機における\\散水システム導入および比較検討} % 和文タイトル
+\name{○高橋 京佑 (FTE プラント設計部), 2022年新入社員 技術配属者一同} % 著者名
 \etitle{} % 英文タイトル
 \ename{\small○KEISUKE Takahashi (FoodTechnoEngineering)}	%著者名（英）
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,199 +55,73 @@ for crop growth and pest invasion. The introduction of multi-spectral sensors wi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 本文
 \section{序論}\label{sec1}
-\subsection{研究背景}\label{background}
-近年農業分野ではICTやAIなどを活用した次世代型の農業「スマート農業\cite{SmartAgri}」が登場し, 収穫や運搬作業が手作業から機械などに移行し, 自動化・省力化が大いに進んだ. 
-しかし, 依然として作物の生育管理や病害虫に侵食された作物の除去などの手作業は残されている. 
-これらの問題を解決すべく生育診断技術や病害虫の診断技術など様々な研究開発が進んでいる\cite{SMART_AGRI}. 
+\subsection{背景}\label{background}
+近年, 地球温暖化の影響のため, 日本全国の気温は上昇傾向にあり, 
+2021年の大阪府の年間平均気温は1883年に比べ2.5℃上昇している\cite{temp_osaka}. 
+さらに, 2021年の真夏日と猛暑日の合計日数は, 2014年の65日に比べ13日増加, 
+猛暑日に関しては8日増加しており\cite{temp_osaka2}, 1880年からの真夏日および
+猛暑日の長期的推移を見ると増加傾向である\cite{temp_osaka3}. 
 
-これらの課題を解決する手段の一つとして，マルチスペクトルセンサの導入が挙げられる．波長の分解能が大きいマルチスペクトルセンサによって一般的な画像では確認できないような
-作物の生育度や鮮度, 農薬濃度などが測定できるだけでなく, 不純物混入や病害虫の発生分布なども測定できる\cite{HS}. 
-しかし, 従来のスペクトル計測はセンサを人工衛星に搭載し計測するため, 非効率かつ低頻度の計測であるために利用価値が低い. 
-% ↑太陽位置とセンサ角度が任意に定まらないため と説明する？
-
-そこで, 任意の時刻と撮影角度から取得したデータを利用できるようにするため, センサを無人航空機(UAV: Unmanned Aerial Vehicle) に搭載して, 
-太陽と測定対象, センサの相対位置を網羅的に変化させてスペクトルデータを収集し, それらで作成したデータベース「スペクトルライブラリ」を構築することが提案される. 
-これによって安価かつ迅速にデータ取得と利用を実現することを目指す.
-
-\subsection{研究目的}\label{purpose}
-\subsecref{background} で前述した「スペクトルライブラリ」構築のため, \figref{fig:spectrum}のようにUAVを測定対象を全方位から撮影できるよう飛行させる必要がある. 
-その際に測定対象周辺に基準マーカーを配置し, カメラでスペクトル計測時もしくは経路移動中常に計測対象とマーカーを同時に捉えておくことで正確に計測対象を撮影できると考えた. 
-
-現在, 指定された経路に従ってUAVが移動するためには, Way Point (以下，WP)を設定し, GPSの情報を利用してWP上を移動する方法が一般的である\cite{WP}. 
-しかしながら, GPSベースのWPナビゲーションによる飛行はGPS受信数が多い環境である上に，計測対象の正確な緯度・経度情報をUAVに対して指示する必要があり, そのオペレーションは煩雑である．
-従って，本研究では誰でも使いやすいシステムによってスペクトルライブラリを構築するために，基準マーカー(Fiducial Marker, マーカー)を測定対象周辺に設置することによる
-飛行精度を向上させる手法を考察することを目的とする. 
 
 \begin{figure}[tb]
     \centering
-        \includegraphics[width=\linewidth]{img/asset5.jpg}
-        \caption{太陽 - 計測対象 - センサ(UAV)の位置関係}
-        \label{fig:spectrum}
+    \begin{minipage}[b]{\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE30_2021.png}
+      \subcaption{真夏日}
+      \label{subfig1:temp_osaka}
+    \end{minipage}\\
+    \begin{minipage}[b]{\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE35_2021.png}
+      \subcaption{猛暑日}
+      \label{subfig1:temp_osaka2}
+    \end{minipage}
+    \caption{大阪府気温推移}
+    \label{fig1:temp_osaka}
 \end{figure}
+
+
+\subsection{目的}\label{purpose}
+% \subsecref{background} で前述した「スペクトルライブラリ」構築のため, \figref{fig:spectrum}のようにUAVを測定対象を全方位から撮影できるよう飛行させる必要がある. 
+% その際に測定対象周辺に基準マーカーを配置し, カメラでスペクトル計測時もしくは経路移動中常に計測対象とマーカーを同時に捉えておくことで正確に計測対象を撮影できると考えた. 
+
+% 現在, 指定された経路に従ってUAVが移動するためには, Way Point (以下，WP)を設定し, GPSの情報を利用してWP上を移動する方法が一般的である\cite{WP}. 
+% しかしながら, GPSベースのWPナビゲーションによる飛行はGPS受信数が多い環境である上に，計測対象の正確な緯度・経度情報をUAVに対して指示する必要があり, そのオペレーションは煩雑である．
+% 従って，本研究では誰でも使いやすいシステムによってスペクトルライブラリを構築するために，基準マーカー(Fiducial Marker, マーカー)を測定対象周辺に設置することによる
+% 飛行精度を向上させる手法を考察することを目的とする. 
+
+% \begin{figure}[tb]
+%     \centering
+%         \includegraphics[width=\linewidth]{img/asset5.jpg}
+%         \caption{太陽 - 計測対象 - センサ(UAV)の位置関係}
+%         \label{fig:spectrum}
+% \end{figure}
 
 \section{調査内容}\label{sec2}
 
-\subsection{基準マーカーとしてのAprilTagの採用}\label{subsec:apriltag}
-% 飛行精度向上のため，UAVに搭載したカメラから基準マーカーなどの指標となるものを検知し, それらの相対位置を利用して計測対象の位置を推定及び経路飛行の安定化を目指す.
-\subsecref{purpose}で前述した目的のため，本研究では基準マーカーのAprilTagを利用する(\figref{fig:apriltags}). 
-AprilTagはミシガン大学の AprilTags Visual Fiducial System プロジェクトで開発された基準マーカーである. 
-マーカーが貼られた物体を撮影することで, 3次元空間上の物体の位置や姿勢を取得することができる. 
+\subsection{DIY}\label{subsec:apriltag}
 
-基準マーカーは他にも存在する中でApril Tagを採用した理由は, 複数の基準マーカーで距離や傾斜の条件を変化させて精度や検出率を調べた結果から\cite{compare_tags}, 
-距離比較において93\%以上, 角度比較において97\%以上の検出率であり, \cite{AprilTag2}では, 30mの距離でも90\%程度の検出率であったことから採用した.  
+\subsection{配置条件}\label{subsec:tag_pos}
 
-\begin{figure}[tb]
-    \centering
-    \includegraphics[width=0.4\linewidth]{img/AprilTag.jpg}
-    \caption{AprilTag}
-    \label{fig:apriltags}
-\end{figure}
-
-\subsection{飛行経路の設定と経路追従中にマーカーを認識するための配置条件}\label{subsec:tag_pos}
-\subsecref{purpose}で前述した周回経路は，半径$r$ mの円に内接する正$n$角形の各頂点をWPに指定してWP間を直線的に飛行する(\figref{fig:spiral_path}). 
-本実験では，$n$=6, $r$=3m, $h_1$=5m, $h_2$=6m, $h_3$=7mとした．各WPでのUAVの機種方向は円の中心である計測対象を向くようにする. 
-基準マーカーであるAprilTagの配置方法は, 飛行経路である外接円の円周上に配置するものとし，本実験では計測対象を中心とした半径3mの円周上に3つのAprilTagを均等に配置する(\figref{fig:tag_pos}). 
-また，本プロジェクトの主な計測対象は樹木であるため,\figref{subfig:tag0}のように経路中心にTag0を置けない場合が多いのでTag0の有無で飛行精度が変化するかも考察する．
-
-\begin{figure}[tb]
-    \centering
-        \includegraphics[width=0.7\linewidth]{img/WP_2.jpg}
-        \caption{周回飛行経路の概要(n=6の場合)}
-        \label{fig:spiral_path}
-\end{figure}
-
-\begin{figure}[tb]
-    \centering
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{img/tag_pos1.jpg}
-      \subcaption{Tag0有り}
-      \label{subfig:tag0}
-    \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{img/tag_pos2.jpg}
-      \subcaption{Tag0なし}
-      \label{subfig:notag0}
-    \end{minipage}
-    \caption{AprilTagの配置方法}
-    \label{fig:tag_pos}
-\end{figure}
 
 
 \section{実験}\label{sec3}
-本研究で提案する飛行プログラムを実環境で飛行実験で用いた. 本章はそれらで用いた機器やプログラムについて示す. 
-
-\subsection{システム構成}\label{subsec:hard}
-本実験では用いたUAVは，\subsecref{subsec:ex1}と\subsecref{subsec:ex2}ではDJI社のMatrice 600 Pro (以下 M600)，
-\subsecref{subsec:ex3}ではMatrice 300-RTK (以下 M300) である.
-本節では，それぞれのUAVで用いたハードウェア構成およびソフトウェア構成を紹介する．
 
 \subsubsection{M600のハードウェア構成}\label{subsubsec:m600}
-カメラ用ジンバルとしてDJI Ronin-MXを搭載し，タグ認識用カメラとしてIntel RealSense D435を取り付けた. 
-UAV制御のためのオンボードPCについては, NVIDIA JETSON Xavier AGX (以下 AGX) を採用した. 
-本研究では地上局のPCよりUAVに搭載されたオンボードCPUに遠隔操作で指令を送るため無線通信が必要となる. 
-Wi-Fiルーターとして, Ubiquiti NanoStation M2を採用した. 各ハードウェアの接続関係を\figref{fig:m600_setting}に示す. 
 
-\begin{figure}[tb]
-    \centering
-        \includegraphics[width=\linewidth]{img/hard/hard_setting.jpg}
-        \caption{M600の実験システム}
-        \label{fig:m600_setting}
-\end{figure}
 
 \subsubsection{M300のハードウェア構成} 
-カメラ兼ジンバルとしてDJI Zenmuse Z30を, オンボードPCはDJI Manifold 2Gを搭載し，
-Wi-Fiルーターは\subsecref{subsubsec:m600}と同様である. 
-各ハードウェアの接続関係を\figref{fig:m300_setting}に示す. 
 
-\begin{figure}[tb]
-    \centering
-        \includegraphics[width=\linewidth]{img/hard/m300.png}
-        \caption{M300の実験システム}
-        \label{fig:m300_setting}
-\end{figure}
 
 \subsubsection{ソフトウェア構成}
-% 提案する経路生成手法のプログラムはC++を用いて実装した. 
-オンボードPCのOSはUbuntu環境であり, ロボットシステム開発のためのフレームワークには
-ROS (Robot Operating System)\cite{ROS}を使用した. また, DJI社のUAVにオンボードPCを搭載する場合の開発ツールキットであるOnboard-SDK (OSDK)\cite{OSDK} を使用した．
-ソフトウェアの詳細は\tableref{table:software}に示す．
 
-\begin{table}[h]
-    \caption{ソフトウェア構成のバージョン}
-    \label{table:software}
-    \centering
-    \begin{tabular}{lrr}
-        & M600 & M300 \\
-        \hline \hline
-        Ubuntu & 18.04 & 16.04 \\
-        ROS & Melodic & Kinetic \\
-        OSDK & ver.3.8 & ver.4.1 \\
-        \hline
-    \end{tabular}
-\end{table}
-
-% \begin{figure}[tb]
-%     \centering
-%         \includegraphics[width=\linewidth]{img/PXL_20210520_054014846_Original.jpg}
-%         \caption{飛行実験の様子\textcolor{red}{(差し替え予定)}}
-%         \label{fig:ex}
-% \end{figure}
-
-% \begin{figure}[tb]
-%     \centering
-%         \includegraphics[width=\linewidth]{img/asset3.jpg}
-%         \caption{実験で使用する各種パラメータ}
-%         \label{fig:parameter}
-% \end{figure}
 
 \subsection{実験1: GPSのみを用いた飛行実験}\label{subsec:ex1}
-本節はGPS情報のみを用いた実証実験について解説する．フィールド上においたUAVの前方3m先に計測対象を設置しGPSベースのWP移動をおこなった．
-実験を行ってみたところ，地上局のPCから確認すると予定していた飛行経路に沿ってUAVが移動しているように見えたが，目視で確認すると経路中心が計測対象から2-3mほど離れていた．
 
 \subsection{実験2: AprilTagによる位置補正}\label{subsec:ex2}
-本節は\subsecref{subsec:ex1}のプログラムに加えて，\figref{fig:tag_pos}のようにAprilTagを配置し，カメラから得られるTagの位置情報をもとにUAVの位置補正を行う．
-Tag間の相対位置などはビジュアルSLAM\cite{SLAM}の一種であるTagSLAMを利用した\cite{TagSLAMurl}\cite{TagSLAM}.
-\figref{fig:ex2}によると，各Tagを検知してTag0を中心とした飛行経路が生成されていることがわかる．一方，飛行中にTagの検知とUAVの姿勢制御の時間が合わずにTagを捜索し続ける問題があった．
-
-\begin{figure}[tb]
-    \centering
-    \includegraphics[width=0.9\linewidth]{img/rviz.png}
-    \caption{実験2の様子}
-    \label{fig:ex2}
-\end{figure}
 
 \subsection{実験3: AprilTagの位置精度の検証}\label{subsec:ex3}
-本節では，AprilTagの精度比較実験について解説する．
-\figref{fig:ex3_tags}に示すように，UAVの発着点をInitial Position(IP)とし，4つのAprilTagを5m間隔で配置しカメラの画角に4つのTagが入るようにUAVの位置およびジンバルの姿勢を変化させた．
-本実験は経路を変えて2回行った(実験3-1, 実験3-2)．
-
-\begin{figure}[tb]
-    \centering
-    \includegraphics[width=0.8\linewidth]{img/Ex/ex3_tag_model.jpg}
-    \caption{実験3のAprilTagの配置}
-    \label{fig:ex3_tags}
-\end{figure}
-
-\figref{fig:ex3}は，IPを原点とした時の各Tagの位置をプロットしたものである. 各Tagの平均値から偏差1mの範囲内のプロット数の確率を\tableref{table:tag_pos}に示す．
-
-
-\begin{figure}[tbp]
-\centering
-\begin{minipage}[b]{\hsize}
-    \centering
-    \includegraphics[width=\linewidth]{img/Ex/ex3-1_tags_pos.png}
-    \subcaption{実験3-1}
-\end{minipage}\\
-\begin{minipage}[b]{\hsize}
-    \centering
-    \includegraphics[width=\linewidth]{img/Ex/ex3-2_tags_pos.png}
-    \subcaption{実験3-2}
-\end{minipage}
-\caption{IPを原点としたTagの配置}
-\label{fig:ex3}
-\end{figure}
 
 \begin{table}[h]
 \caption{AprilTagの位置精度}
@@ -257,140 +140,64 @@ Tag間の相対位置などはビジュアルSLAM\cite{SLAM}の一種であるTa
 
 
 \section{考察}
-\subsecref{subsec:ex1}の結果から，飛行誘導はGPSだけでなく基準マーカーの導入が必要であると考えた．
-また，\subsecref{subsec:ex2}での問題は，SLAMの処理時間による時間遅れが原因であると考え，プログラムの高速化が必要であると考えた．
-\subsecref{subsec:ex3}での精度の違いは, UAVとジンバルの変量およびTagを見失う時間が原因であると考えた．
+
 
 \section{結論}
-% 本研究では，「スペクトルライブラリ」の構築を目的として，GPSを用いた3次元周回経路のUAV飛行実験や，
-% カメラを用いたAprilTagによる精度向上の可能性の検討およびシステムの有用性の検討を行った．
 
-本研究の実験のようなGPSのみで指定したWPの移動経路は，GPSの受信数が少ない環境下において精度に欠ける部分があり，GPSより高精度な計測機器のRTKや基準マーカーのAprilTagなどをランドマーク
-としたUAVの自己位置補正が必要である事がわかった．
-そこで，本研究ではAprilTagを利用した自己位置同定手法について提案し，その精度評価においては，UAVに搭載したカメラからの各マーカーの位置および姿勢を座標変換により取得し，
-73\%から97\%まで確率で誤差1m範囲に収まることがわかった．これにより提案手法が「スペクトルライブラリ」を構築するために十分な精度が持つことが明らかになった．
-
-% 今後の課題および展望としては，TagSLAMの計算時間が大きいためUAVが途中でTagの認識やUAVの姿勢の補正を
-% し続けるという問題があった．SLAMの最適化計算を行う回数や条件を見直すなどのアルゴリズムの改善が必要
-% である．また，カメラによるAprilTagの検知をしやすくするために，より広角な画角を持つカメラを用いた時の，画角の
-% 歪みによる検知精度や通常のカメラとの検知率の違いについても研究の余地がある．
-
-% \begin{figure}[tbp]
-%     \centering
-%     \begin{minipage}[b]{\hsize}
-%         \centering
-%         \includegraphics[width=\linewidth]{img/Ex/ex3-1_tags_pos2.png}
-%         \subcaption{実験3-1}
-%     \end{minipage}\\
-%     \begin{minipage}[b]{\hsize}
-%         \centering
-%         \includegraphics[width=\linewidth]{img/Ex/ex3-2_tags_pos2.png}
-%         \subcaption{実験3-2}
-%     \end{minipage}
-%     \caption{\figref{fig:ex3}を高度別に分類した図}
-%     \label{fig:ex3_2}
-% \end{figure}
-
-
-% \section{緒言}
-% 本稿では SICE SI 部門講演会 SI2021 の予稿原稿を作成するための説明を行います．
-% SI2021では予稿原稿としてPDFファイル形式のファイルを電子投稿していただくことを原則とさせていただいております．
-% ただし，電子化やネットワーク接続が困難な場合には個別に対応させていただきますので，プログラム委員会までご相談ください(Webサイトからお問い合わせできます)．
-% %
-% \section{原稿作成方法}
-% \subsection{原稿枚数，ファイル形式とファイル容量}
-% 原稿は1講演につき1ページから最大6ページとなります（キーノート講演も同様です）．
-% 提出していただく原稿のファイル形式は原則としてPDF形式といたします．
-% PDF形式とすることが不可能な場合には，プログラム委員会にご連絡ください．
-% また，原稿完成時のファイルサイズはPDF形式で2MB程度を上限の目安とさせていただきます．
-% 原稿送付時にはそれ以上でも受付可能な場合がありますが，その場合には全体の原稿の総容量により再提出をお願いする場合がありますので，ご了承ください．
-% %
-% \subsection{用紙サイズ，書式など}
-% \subsubsection{原稿の体裁}
-% 用紙サイズはA4版(縦297mm$\times$横210mm)とし，余白部分は左右15mm，上20mm，下27mmを確保してください．（プログラム委員会でヘッダ・フッダ部分に情報を追加する予定ですので，ご注意ください．）
-% よって，原稿作成領域は250mm$\times$180mmの枠内となります．
-% %
-% \subsubsection{基本書式}
-% 原稿の記載内容は，下記の順序とします．
-% \begin{enumerate}
-% \setlength{\parskip}{0cm} % 段落間詰める
-% \setlength{\itemsep}{0cm} % 項目間詰める
-% \item[1)] 和文題目（英文原稿の場合には不要，16ptゴシックフォント推奨，センタリング）
-% \item[2)] 和文著者名・所属（英文原稿の場合には不要，12pt明朝フォント推奨，センタリング，登壇者に○を付加）
-% \item[3)] 英文題目（16pt Times-Roman Bold推奨，センタリング）
-% \item[4)] 英文著者名・所属（12pt Times-Roman推奨，センタリング，登壇者に○を付加）
-% \item[5)] 英文アブストラクト（9pt Times-Roman推奨，3 〜 5行程度，文章両側を10mm程度インデント）
-% \item[6)] 本文（本文文章は10pt明朝フォント推奨，小見出しは12 〜 10pt程度のゴシックフォント推奨）
-% \item[7)] 参考文献（10pt明朝フォント推奨）
-% \end{enumerate}
-% \subsubsection{図と表について}
-% 予稿はPDFファイルとなりますので，図や表はカラーで作成していただいても構いません．
-% ただしファイルサイズの制限にご注意ください．
-% 図のキャプションは図の下にFig.1，Fig.2という具合に，表のキャプションは表の上にTable 1，Table 2という具合にお付けください．（英語表記，フォントは10pt Times-Roman推奨）
-% %
-% \section{結言}
-% 本稿はあくまでも予稿原稿を作成するためのガイドラインを示したものです．改行幅やフォントの設定などについては，原稿の内容や量に合わせて適宜判断していただき，原稿を作成してください．
-% また，本稿はSICE-SI2021の予稿原稿の書き方\cite{SI2021}を参考に，\TeX 用書式を用意したものです．適宜sice-si.styを変更して使用してください．
+\section{緒言}
+本稿では SICE SI 部門講演会 SI2021 の予稿原稿を作成するための説明を行います．
+SI2021では予稿原稿としてPDFファイル形式のファイルを電子投稿していただくことを原則とさせていただいております．
+ただし，電子化やネットワーク接続が困難な場合には個別に対応させていただきますので，プログラム委員会までご相談ください(Webサイトからお問い合わせできます)．
 %
+\section{原稿作成方法}
+\subsection{原稿枚数，ファイル形式とファイル容量}
+原稿は1講演につき1ページから最大6ページとなります（キーノート講演も同様です）．
+提出していただく原稿のファイル形式は原則としてPDF形式といたします．
+PDF形式とすることが不可能な場合には，プログラム委員会にご連絡ください．
+また，原稿完成時のファイルサイズはPDF形式で2MB程度を上限の目安とさせていただきます．
+原稿送付時にはそれ以上でも受付可能な場合がありますが，その場合には全体の原稿の総容量により再提出をお願いする場合がありますので，ご了承ください．
 %
+\subsection{用紙サイズ，書式など}
+\subsubsection{原稿の体裁}
+用紙サイズはA4版(縦297mm$\times$横210mm)とし，余白部分は左右15mm，上20mm，下27mmを確保してください．（プログラム委員会でヘッダ・フッダ部分に情報を追加する予定ですので，ご注意ください．）
+よって，原稿作成領域は250mm$\times$180mmの枠内となります．
+%
+\subsubsection{基本書式}
+原稿の記載内容は，下記の順序とします．
+\begin{enumerate}
+\setlength{\parskip}{0cm} % 段落間詰める
+\setlength{\itemsep}{0cm} % 項目間詰める
+\item[1)] 和文題目（英文原稿の場合には不要，16ptゴシックフォント推奨，センタリング）
+\item[2)] 和文著者名・所属（英文原稿の場合には不要，12pt明朝フォント推奨，センタリング，登壇者に○を付加）
+\item[3)] 英文題目（16pt Times-Roman Bold推奨，センタリング）
+\item[4)] 英文著者名・所属（12pt Times-Roman推奨，センタリング，登壇者に○を付加）
+\item[5)] 英文アブストラクト（9pt Times-Roman推奨，3 〜 5行程度，文章両側を10mm程度インデント）
+\item[6)] 本文（本文文章は10pt明朝フォント推奨，小見出しは12 〜 10pt程度のゴシックフォント推奨）
+\item[7)] 参考文献（10pt明朝フォント推奨）
+\end{enumerate}
+\subsubsection{図と表について}
+予稿はPDFファイルとなりますので，図や表はカラーで作成していただいても構いません．
+ただしファイルサイズの制限にご注意ください．
+図のキャプションは図の下にFig.1，Fig.2という具合に，表のキャプションは表の上にTable 1，Table 2という具合にお付けください．（英語表記，フォントは10pt Times-Roman推奨）
+%
+\section{結言}
+本稿はあくまでも予稿原稿を作成するためのガイドラインを示したものです．改行幅やフォントの設定などについては，原稿の内容や量に合わせて適宜判断していただき，原稿を作成してください．
+また，本稿はSICE-SI2021の予稿原稿の書き方\cite{SI2021}を参考に，\TeX 用書式を用意したものです．適宜sice-si.styを変更して使用してください．
+
+
 %参考文献
 \begin{thebibliography}{99}
-% \bibitem{homma2020}
-%   本間 貫太：
-%   ``UAV を用いた自動スペクトル計測システムにおける三次元飛行経路の生成''，
-%   北海道大学 大学院工学院 人間機械システムデザイン専攻 ロボティクス・ダイナミクス研究室 修士論文 (2020) ．\vspace{2mm}
+\bibitem{temp_osaka}
+国土交通省, 気象庁, 大阪府 日最高気温の月平均値, 
+\url{https://www.data.jma.go.jp/obd/stats/etrn/view/monthly_s3.php?prec_no=62&block_no=47772&year=&month=&day=&view=a2}\vspace{2mm}
 
-\bibitem{SmartAgri}
-農林水産省, スマート農業の定義, \url{http://www.maff.go.jp/j/kanbo/smart/}\vspace{2mm}
+\bibitem{temp_osaka2}
+George's Web Sites, 大阪府-大阪市の気温に関する統計情報, 
+\url{http://www.tvg.ne.jp/george/weather/gw_stat_temp.html?city=oosaka}\vspace{2mm}
 
-\bibitem{SMART_AGRI}
-SMART AGRI, スマート農業, \url{https://smartagri-jp.com/smartagri/20}\vspace{2mm}
-
-\bibitem{HS}
-株式会社アルゴ, ハイパースペクトルセンサー・イメージ分光カメラ, \url{https://www.argocorp.com/cam/special/HeadWall/app-1.html}\vspace{2mm}
-
-\bibitem{WP}
-Dániel Stojcsics, "Autonomous Waypoint-based Guidance Methods for Small Size Unmanned Aerial Vehicles", Acta Polytechnica Hungarica, Vol. 11, No. 10, 2014.\vspace{2mm}
-
-\bibitem{compare_tags}
-Experimental Comparison of Fiducial Markers for Pose Estimation, 
-Michail Kalaitzakis, et al, International Conference on Unmanned Aircraft Systems (2020).\vspace{2mm}
-
-\bibitem{OSDK}
-DJI Developer, “What is OSDK?”, DJI Developer HP, 
-\url{https://developer.dji.com/onboard-sdk/documentation/introduction/homepage.html}\vspace{2mm}
-
-\bibitem{ROS}
-Open Source Robotics Foundation, ROS.org, 
-\url{http://www.ros.org/}\vspace{2mm}
-
-% \bibitem{apriltag}
-% E. Olson, “AprilTag: A robust and flexible visual fiducial system,”
-% in 2011 IEEE International Conference on Robotics and Automation.\vspace{2mm}
-
-\bibitem{AprilTag2}
-J. Wang and E. Olson, “AprilTag 2: Efficient and robust fiducial detection,”
-in 2016 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).\vspace{2mm}
-    
-
-% \bibitem{uav_auto_landing}
-% "UAV Autonomous Landing Technology Based on AprilTags Vision Positioning Algorithm," 
-% Zhou Li, Yang Chen, Hao Lu, Huaiyu Wu, and Lei Cheng(2019).\vspace{2mm}
-
-\bibitem{SLAM}
-Cesar Cadena, Luca Carlone, Henry Carrillo, Yasir Latif, Davide Scaramuzza, Jos´e Neira, Ian Reid, and John J. Leonard, 
-"Past, Present, and Future of Simultaneous Localization and Mapping: Toward the Robust-Perception Age,"
-in IEEE TRANSACTIONS ON ROBOTICS, Dec 2016.\vspace{2mm}
-
-\bibitem{TagSLAMurl}
-TagSLAM, TagSLAM: Flexible SLAM with tags, \url{https://berndpfrommer.github.io/tagslam_web/}\vspace{2mm}
-
-\bibitem{TagSLAM}
-Bernd Pfrommer and Kostas Daniilidis, "TagSLAM: Robust SLAM with Fiducial Markers,"
-in 1 Oct 2019.\vspace{2mm}
-
-
-
+\bibitem{temp_osaka3}
+A-PLAT 気候変動適応プラットフォーム, 気候変動の観測・予測データ, 大阪府観測データ, 
+\url{https://adaptation-platform.nies.go.jp/map/Osaka/index_past.html}\vspace{2mm}
 \end{thebibliography}
 %
 %
