@@ -28,7 +28,7 @@
 \newcommand{\subsecref}[1]{\ref{#1}\hspace{0.2zw} 節}
 
 % 画像挿入テンプレ
-% \begin{figure}[tb]
+% \begin{figure}[htb]
 %     \centering
 %         \includegraphics[width=\linewidth]{img/〇〇〇〇.jpg}
 %         \caption{キャプション}
@@ -39,19 +39,16 @@
 \begin{document}
 %
 % タイトルと著者名
-\title{FTE新入社員課題報告書\\[2mm]社屋屋上室外機における\\散水システム導入および比較検討} % 和文タイトル
+\title{FTE新入社員課題報告書\\[1.5mm]本社屋上室外機における\\散水システム導入および比較検討} % 和文タイトル
 \name{○高橋 京佑, 小坂 丞, 仲野 茂翠, 設樂 日和, 𠮷岡 拓海, 渡辺 夏芽, 
-\\中村 天音, 塚田 浩貴, 青木 昇, 吉川 唯希, 阪田 悠} % 著者名
+\\中村 天音, 塚田 浩貴, 青木 昇, 吉川 唯希, 佐藤 央都, 阪田 悠} % 著者名
 
-\etitle{FTE company building rooftop condensing unit watering system} % 英文タイトル
+\etitle{Introduction and comparison of watering system \\for cindensing unit on the office rooftop} % 英文タイトル
 \ename{\small○KEISUKE Takahashi, TASUKU Kosaka, MOTOAKI Nakano, HINOWA Shidara, TAKUMI Yoshioka, NATSUME Watanabe, \\
-AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, YU Sakata}	%著者名（英）
+AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU Sakata}	%著者名（英）
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % アブストラクト
-\abst
-{Recently, "Smart Agriculture" has been promoted in the agricultural sector, but there are issues to be solved in terms of diagnosis technology 
-for crop growth and pest invasion. The introduction of multi-spectral sensors will solve these problems. 
-"To build a "Spectral Library," we will examine whether it is possible to use UAV to guide flights around the target using "AprilTag."}
+\abst{}
 
 % タイトルの出力
 \maketitle
@@ -65,23 +62,23 @@ for crop growth and pest invasion. The introduction of multi-spectral sensors wi
 猛暑日に関しては8日増加しており\cite{temp_osaka2}, 1880年からの真夏日および
 猛暑日の長期的推移を見ると増加傾向である (\figref{fig1:temp_osaka}). 
 
-\begin{figure*}[tb]
+\begin{figure}[hhtb]
   \centering
-  \begin{minipage}[b]{0.45\linewidth}
+  \begin{minipage}[b]{\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE30_2021.png}
+      \includegraphics[width=\linewidth]{img/OSAKA_tmaxGE30.png}
       \subcaption{大阪 真夏日}
       \label{subfig1:temp_osaka}
-    \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
+    \end{minipage}\\
+    \begin{minipage}[b]{\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{img/27_OSAKA_tmaxGE35_2021.png}
+      \includegraphics[width=\linewidth]{img/OSAKA_tmaxGE35.png}
       \subcaption{大阪 猛暑日}
       \label{subfig1:temp_osaka2}
     \end{minipage}
     \caption{真夏日および猛暑日の年間日数 1883-2021年\cite{temp_osaka3}}
     \label{fig1:temp_osaka}
-\end{figure*}
+\end{figure}
  
 
 空調および冷凍分野において空気を冷やす原理として, "冷凍サイクル" が挙げられる. 
@@ -90,19 +87,19 @@ for crop growth and pest invasion. The introduction of multi-spectral sensors wi
 は使用する冷媒の状態変化に伴う運転状況の変化, 装置能力, 装置動力などの計算に
 よく使用される. 
 上記に示した気温上昇に伴い, 今後は空調機の利用機会が増えると予想できる. 一般に
-空調機には室内機 (別称: クーラー) と室外機 (別称: 冷凍機) に分類されており, 
-冷房時において室外機では「圧縮」と「凝縮」, 室内機では「蒸発」と「膨張」の行程を
-それぞれ担っている. 室外機は高圧化した冷媒ガスを外気に熱を伝達することにより凝縮させ, 
+空調機には室内機と室外機に分類されており, 
+冷房時において, 室外機は圧縮と凝縮, 室内機は蒸発と膨張の行程をそれぞれ担っている. 
+室外機は高圧化した冷媒ガスを外気に熱を伝達することにより凝縮させ, 
 室内機では, 膨張した冷媒液を室内の空気と熱交換させて冷媒の潜熱を利用して冷却する. 
 
-\begin{figure}[tb]
+\begin{figure}[hhtb]
   \centering
-      \includegraphics[width=\linewidth]{img/cycle-2.png}
+      \includegraphics[width=0.8\linewidth]{img/cycle-2.png}
       \caption{冷凍サイクル}
       \label{fig1:cycle}
 \end{figure}
 
-\begin{figure}[tb]
+\begin{figure}[hhtb]
     \centering
         \includegraphics[width=\linewidth]{img/ph線図.jpg}
         \caption{モリエル線図(p-h 線図) 冷媒:R410}
@@ -115,7 +112,7 @@ for crop growth and pest invasion. The introduction of multi-spectral sensors wi
 実際に外気温30℃, 相対湿度50\%の環境下で簡易的に10分おきにバケツにて散水をしながら
 電力量を計測した. その対照実験の計測環境は\tableref{table:ex1}のとおりである. 
 
-\begin{table}[tbh]
+\begin{table}[hhtb]
   \caption{計測環境}
   \label{table:ex1}
   \centering
@@ -132,52 +129,170 @@ for crop growth and pest invasion. The introduction of multi-spectral sensors wi
 比較して小さくなっていることが分かる.
 
 % 散水の有無の電力比較
-\begin{figure*}[tb]
+\begin{figure*}[hhtb]
   \centering
-      \includegraphics[width=0.9\linewidth]{img/ex1.png}
+      \includegraphics[width=\linewidth]{img/ex1.png}
       \caption{散水の有無による電力量の比較}
       \label{fig1:compare_watering}
 \end{figure*}
 
 
-\begin{table*}[tbh]
-  \caption{エアコン冷房時 電気代}
-  \label{table:aircon}
-  \centering
-  \begin{tabular}{lrrrr}
-    エアコン6畳タイプ & 最小消費電力 & 最大消費電力 & 期間消費電力量 & 1時間の電気代 \\
-     & [W] & [W] & [Wh] & [円] \\
-    \hline \hline
-    DAIKIN AN22YRS-W & 115 & 960 & 630 & 17.0 \\
-    Panasonic CU-X221D & 110 & 920 & 586 & 15.8 \\
-    SHARP AY-N22X & 130 & 810 & 578 & 15.6 \\
-    三菱電機　MSZ-ZW2221 & 105 & 850 & 594 & 16.0 \\
-    日立　RAC-X22L & 115 & 880 & 555 & 15.0 \\
-    \hline
-  \end{tabular}
-\end{table*}
+% \begin{table*}[hhtb]
+%   \caption{エアコン冷房時 電気代}
+%   \label{table:aircon}
+%   \centering
+%   \begin{tabular}{lrrrr}
+%     エアコン6畳タイプ & 最小消費電力 & 最大消費電力 & 期間消費電力量 & 1時間の電気代 \\
+%      & [W] & [W] & [Wh] & [円] \\
+%     \hline \hline
+%     DAIKIN AN22YRS-W & 115 & 960 & 630 & 17.0 \\
+%     Panasonic CU-X221D & 110 & 920 & 586 & 15.8 \\
+%     SHARP AY-N22X & 130 & 810 & 578 & 15.6 \\
+%     三菱電機　MSZ-ZW2221 & 105 & 850 & 594 & 16.0 \\
+%     日立　RAC-X22L & 115 & 880 & 555 & 15.0 \\
+%     \hline
+%   \end{tabular}
+% \end{table*}
 
 
 \subsection{目的}\label{purpose}
 \subsecref{background} より, 室外機において散水システムの導入が効果的であるという事が分かった. 
-そこで本研究では, 散水システムの導入に伴い自作散水システムや市販の機器など様々な条件で比較を行い, 
-電気代および水道代とのコストバランスを考慮しながら, 最適な
+そこで本研究では, 散水システムの導入に伴い自作散水システムや市販の機器など様々な条件で比較検証を行い, 
+電気代および水道代とのコストバランスを考慮しながら, 最適な散水システムを検討することを目的とする. 
 
 \section{調査内容}\label{sec2}
+本章では本研究で行った計測のための調査内容について説明する. 
+本研究で調査対象とした室外機はビル用マルチエアコンである三菱社 
+PUHY-EP335DMG9を採用した (\figref{subfig:condensing_unit}). 
+室内機は本社2階の事務室に設置された天井吊り下げ式のユニットクーラーである三菱社 
+○○○○である. 
 
-\subsection{DIY}\label{subsec:apriltag}
+\begin{figure}[hhtb]
+  \centering
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/PUHY-EP335DMG9.jpg}
+      \subcaption{PUHY-EP355DMG9}
+      \label{subfig:condensing_unit}
+    \end{minipage}
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/OSAKA_tmaxGE35.png}
+      \subcaption{室内機挿入予定}
+      \label{subfig:unit_cooler}
+    \end{minipage}
+  \caption{計測対象}
+  \label{fig2:hard}
+\end{figure}
 
-\subsection{計測}\label{subsec:tag_pos}
+\begin{table}[hhtb]
+  \caption{機器仕様(冷房時)}
+  \label{table:hard}
+  \centering
+  \begin{tabular}{lr}
+    PUHY-EP355DMG9 & \\
+    \hline \hline
+    電源 & 3相 200V \\
+    能力 & 33.5 kW \\
+    消費電力 & 10.7 kW \\
+    冷媒 & R410 \\
+     & \\
+    ○○○○ & \\
+    \hline \hline
+    電源 & 3相 200V \\
+    能力 &  kW \\
+    消費電力 &  kW \\
+    \hline
+  \end{tabular}
+\end{table}
 
+
+\subsection{自作散水システム}
+本節では, 計測実験の比較対象として自作する散水システムの概要について説明する. 
+
+\figref{fig2:watering_sys}に示す通り, 屋上にある蛇口からホースと塩化ビニル管を結合させて
+室外機まで通し, 散水ノズルを用いて設置した. 
+
+\begin{figure}[hhtb]
+  \centering
+    \begin{minipage}[b]{\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/平面図.jpg}
+      \subcaption{平面図}
+      \label{subfig:平面図}
+    \end{minipage}\\
+    \begin{minipage}[b]{\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/裏手立面図.jpg}
+      \subcaption{裏手立面図}
+      \label{subfig:裏手立面図}
+    \end{minipage}
+  \caption{散水システム設計図}
+  \label{fig2:watering_sys}
+\end{figure}
+
+\subsection{計測}
+計測したパラメータは以下の通りである. 
+
+\begin{itemize}
+  \item 外気環境(気温, 相対湿度, 風速)
+  \item 凝縮器入口温度 (2箇所)
+  \item 凝縮器出口温度 (2箇所)
+  \item 電気系パラメータ (電流, 電圧, 電力量)
+  \item 散水系パラメータ (水温, 散水流量)
+\end{itemize}
 
 
 \section{結果}\label{sec3}
+計測環境は以下の4条件に分けて行った. 
+
+\begin{description}
+  \item[  Experiment1] 散水なし
+  \item[  Experiment2] 散水あり (手動)
+  \item[  EXperiment3] 散水あり (自作)
+  \item[  EXperiment4] 散水あり (市販)
+\end{description}
+
+また, 各条件での計測結果は\tableref{table:ex}に示す通りである. 
+
+\begin{table}[htb]
+  \caption{計測環境}
+  \label{table:ex}
+  \centering
+  \begin{tabular}{lrrrrr}
+    実験 & 気温 & 湿度 & \small 比エンタルピー & \small 設定温度 & 気候 \\
+     & [℃] & [\%] & [kJ/kg] & [℃] &  \\
+    \hline \hline
+    Ex1 & 34.3 & 48.0 & 76.5 & 27.0 & 晴れ  \\
+    Ex2 & 32.9 & 58.9 & 80.9 & 27.0 & 曇り \\
+    Ex3 &  &  &  & 27.0 & 晴れ \\
+    Ex4 &  &  &  & 27.0 & 晴れ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+各計測実験での電力量との推移は\figref{fig1:compare_watering}に示す. 
 
 \section{考察}
+従量電気料金を25円として見積もった際の各実験における電気代は\tableref{table:electric_bill}に示す. 
 
+\begin{table}[htb]
+  \caption{1時間あたりの電気料金}
+  \label{table:electric_bill}
+  \centering
+  \begin{tabular}{lrr}
+    実験 & 消費電力 & 電気代[円] \\
+    \hline \hline
+    Ex1 &  & 34 \\
+    Ex2 &  & 32 \\
+    Ex3 &  &  \\
+    Ex4 &  &  \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \section{結論}
-
+本章では計測結果および考察を総括した結論を示す. 
 
 %参考文献
 \begin{thebibliography}{99}
