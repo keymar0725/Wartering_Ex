@@ -27,14 +27,6 @@
 % 節番号の後調整
 \newcommand{\subsecref}[1]{\ref{#1}\hspace{0.2zw} 節}
 
-% 画像挿入テンプレ
-% \begin{figure}[htb]
-%     \centering
-%         \includegraphics[width=\linewidth]{img/〇〇〇〇.jpg}
-%         \caption{キャプション}
-%         \label{ラベリング}
-% \end{figure}
-
 
 \begin{document}
 %
@@ -43,7 +35,7 @@
 \name{○高橋 京佑, 小坂 丞, 仲野 茂翠, 設樂 日和, 𠮷岡 拓海, 渡辺 夏芽, 
 \\中村 天音, 塚田 浩貴, 青木 昇, 吉川 唯希, 佐藤 央都, 阪田 悠} % 著者名
 
-\etitle{Introduction and comparison of watering system \\for cindensing unit on the office rooftop} % 英文タイトル
+\etitle{Introduction and Comparison of Watering System \\for Condensing Unit on the office rooftop} % 英文タイトル
 \ename{\small○KEISUKE Takahashi, TASUKU Kosaka, MOTOAKI Nakano, HINOWA Shidara, TAKUMI Yoshioka, NATSUME Watanabe, \\
 AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU Sakata}	%著者名（英）
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,7 +54,7 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
 猛暑日に関しては8日増加しており\cite{temp_osaka2}, 1880年からの真夏日および
 猛暑日の長期的推移を見ると増加傾向である (\figref{fig1:temp_osaka}). 
 
-\begin{figure}[hhtb]
+\begin{figure}[htb]
   \centering
   \begin{minipage}[b]{\linewidth}
       \centering
@@ -86,20 +78,20 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
 の4行程で構成されている. 冷凍サイクルにおいてモリエル線図(\figref{fig1:ph_r410}) 
 は使用する冷媒の状態変化に伴う運転状況の変化, 装置能力, 装置動力などの計算に
 よく使用される. 
-上記に示した気温上昇に伴い, 今後は空調機の利用機会が増えると予想できる. 一般に
-空調機には室内機と室外機に分類されており, 
+前述した気温上昇に伴い, 今後は空調機の利用機会が増えると予想できる. 
+一般に空調機には室内機と室外機に分類されており, 
 冷房時において, 室外機は圧縮と凝縮, 室内機は蒸発と膨張の行程をそれぞれ担っている. 
-室外機は高圧化した冷媒ガスを外気に熱を伝達することにより凝縮させ, 
+室外機は高圧化した冷媒ガスを外気と熱交換させることで凝縮させ, 
 室内機では, 膨張した冷媒液を室内の空気と熱交換させて冷媒の潜熱を利用して冷却する. 
 
-\begin{figure}[hhtb]
+\begin{figure}[htb]
   \centering
       \includegraphics[width=0.8\linewidth]{img/cycle-2.png}
       \caption{冷凍サイクル}
       \label{fig1:cycle}
 \end{figure}
 
-\begin{figure}[hhtb]
+\begin{figure}[htb]
     \centering
         \includegraphics[width=\linewidth]{img/ph線図.jpg}
         \caption{モリエル線図(p-h 線図) 冷媒:R410}
@@ -109,50 +101,31 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
 ここで, 室外機吸い込み側空気, つまり外気温度が上昇すると, それに付随して凝縮温度
 が高くなる. それにより冷却能力は小さくなり, 圧縮機駆動の駆動力が大きくなるため, 
 成績係数が小さくなる. したがって, 同じ冷凍能力を出すためには消費電力が大きくなる.  
-実際に外気温30℃, 相対湿度50\%の環境下で簡易的に10分おきにバケツにて散水をしながら
-電力量を計測した. その対照実験の計測環境は\tableref{table:ex1}のとおりである. 
+実際に外気温30℃, 相対湿度50\%の環境下で簡易的な散水をしながら電力量を計測した. 
+その対照実験の計測環境は\tableref{table:ex1}のとおりである. 
+\figref{fig1:compare_watering}に示すように, 実験2 (散水あり) の電力量は実験1 (散水なし) のそれと
+比較して小さくなっていることが分かる.
 
-\begin{table}[hhtb]
+\begin{table}[htb]
   \caption{計測環境}
   \label{table:ex1}
   \centering
   \begin{tabular}{lcccc}
-     & 外気温 & 湿度 & 設定温度 & 気候 \\
+     & 外気温 & 湿度 & 設定温度 & 気候 \\[-1.5mm]
+     & [℃] & [\%] & [℃] &  \\
     \hline \hline
-    実験1 & 34.3 & 48.0 & 27 & 晴れ  \\
-    実験2 & 32.9 & 58.9 & 27 & 曇り \\
+    実験1 & 34.3 & 48.0 & 27.0 & 晴れ  \\
+    実験2 & 32.9 & 58.9 & 27.0 & 曇り \\
     \hline
   \end{tabular}
 \end{table}
 
-\figref{fig1:compare_watering}に示すように, 実験2 (散水あり) の電力量は実験1 (散水なし) のそれと
-比較して小さくなっていることが分かる.
-
-% 散水の有無の電力比較
-\begin{figure*}[hhtb]
+\begin{figure*}[htb]
   \centering
-      \includegraphics[width=\linewidth]{img/ex1.png}
+      \includegraphics[width=0.8\linewidth]{img/ex1.png}
       \caption{散水の有無による電力量の比較}
       \label{fig1:compare_watering}
 \end{figure*}
-
-
-% \begin{table*}[hhtb]
-%   \caption{エアコン冷房時 電気代}
-%   \label{table:aircon}
-%   \centering
-%   \begin{tabular}{lrrrr}
-%     エアコン6畳タイプ & 最小消費電力 & 最大消費電力 & 期間消費電力量 & 1時間の電気代 \\
-%      & [W] & [W] & [Wh] & [円] \\
-%     \hline \hline
-%     DAIKIN AN22YRS-W & 115 & 960 & 630 & 17.0 \\
-%     Panasonic CU-X221D & 110 & 920 & 586 & 15.8 \\
-%     SHARP AY-N22X & 130 & 810 & 578 & 15.6 \\
-%     三菱電機　MSZ-ZW2221 & 105 & 850 & 594 & 16.0 \\
-%     日立　RAC-X22L & 115 & 880 & 555 & 15.0 \\
-%     \hline
-%   \end{tabular}
-% \end{table*}
 
 
 \subsection{目的}\label{purpose}
@@ -162,31 +135,27 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
 
 \section{調査内容}\label{sec2}
 本章では本研究で行った計測のための調査内容について説明する. 
-本研究で調査対象とした室外機はビル用マルチエアコンである三菱社 
-PUHY-EP335DMG9を採用した (\figref{subfig:condensing_unit}). 
-室内機は本社2階の事務室に設置された天井吊り下げ式のユニットクーラーである三菱社 
-○○○○である. 
 
-\begin{figure}[hhtb]
+本研究で調査対象とした室外機はビル用マルチエアコンである三菱社 
+PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:hard}). 
+この室外機に散水の有無など, 以下の4条件に分けて計測を行っていく.  
+
+\begin{description}
+  \item[  実験1 ] 散水なし
+  \item[  実験2 ] 散水あり (手動)
+  \item[  実験3 ] 散水あり (自作)
+  \item[  実験4 ] 散水なし (雨天)
+\end{description}
+
+\begin{figure}[htb]
   \centering
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/PUHY-EP335DMG9.jpg}
-      \subcaption{PUHY-EP355DMG9}
-      \label{subfig:condensing_unit}
-    \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/OSAKA_tmaxGE35.png}
-      \subcaption{室内機挿入予定}
-      \label{subfig:unit_cooler}
-    \end{minipage}
-  \caption{計測対象}
-  \label{fig2:hard}
+  \includegraphics[width=0.7\linewidth]{img/PUHY-EP335DMG9.jpg}
+  \caption{室外機 PUHY-EP355DMG9}
+  \label{fig:condensing_unit}
 \end{figure}
 
-\begin{table}[hhtb]
-  \caption{機器仕様(冷房時)}
+\begin{table}[htb]
+  \caption{室外機仕様(冷房時)}
   \label{table:hard}
   \centering
   \begin{tabular}{lr}
@@ -196,15 +165,12 @@ PUHY-EP335DMG9を採用した (\figref{subfig:condensing_unit}).
     能力 & 33.5 kW \\
     消費電力 & 10.7 kW \\
     冷媒 & R410 \\
-     & \\
-    ○○○○ & \\
-    \hline \hline
-    電源 & 3相 200V \\
-    能力 &  kW \\
-    消費電力 &  kW \\
     \hline
   \end{tabular}
 \end{table}
+
+また、計測時間は日中で最も気温が高くなる13時から15時までの2時間とし, 
+データログを取れるもの以外のパラメータは10分ごとに計測するとした. 
 
 
 \subsection{自作散水システム}
@@ -213,15 +179,15 @@ PUHY-EP335DMG9を採用した (\figref{subfig:condensing_unit}).
 \figref{fig2:watering_sys}に示す通り, 屋上にある蛇口からホースと塩化ビニル管を結合させて
 室外機まで通し, 散水ノズルを用いて設置した. 
 
-\begin{figure}[hhtb]
+\begin{figure*}[htb]
   \centering
-    \begin{minipage}[b]{\linewidth}
+    \begin{minipage}[b]{0.45\linewidth}
       \centering
       \includegraphics[width=\linewidth]{img/平面図.jpg}
       \subcaption{平面図}
       \label{subfig:平面図}
-    \end{minipage}\\
-    \begin{minipage}[b]{\linewidth}
+    \end{minipage}
+    \begin{minipage}[b]{0.45\linewidth}
       \centering
       \includegraphics[width=\linewidth]{img/裏手立面図.jpg}
       \subcaption{裏手立面図}
@@ -229,44 +195,38 @@ PUHY-EP335DMG9を採用した (\figref{subfig:condensing_unit}).
     \end{minipage}
   \caption{散水システム設計図}
   \label{fig2:watering_sys}
-\end{figure}
+\end{figure*}
 
 \subsection{計測}
-計測したパラメータは以下の通りである. 
+実験で計測するパラメータは以下の通りである. 
 
 \begin{itemize}
   \item 外気環境(気温, 相対湿度, 風速)
   \item 凝縮器入口温度 (2箇所)
   \item 凝縮器出口温度 (2箇所)
-  \item 電気系パラメータ (電流, 電圧, 電力量)
-  \item 散水系パラメータ (水温, 散水流量)
+  \item 室外機 (圧縮機運転状況)
+  \item 電気系 (電流, 電圧, 電力量)
+  \item 散水系 (水温, 散水流量)
+  \item 室内系 (設定温度, 温湿度)
 \end{itemize}
 
 
 \section{結果}\label{sec3}
-計測環境は以下の4条件に分けて行った. 
-
-\begin{description}
-  \item[  Experiment1] 散水なし
-  \item[  Experiment2] 散水あり (手動)
-  \item[  EXperiment3] 散水あり (自作)
-  \item[  EXperiment4] 散水あり (市販)
-\end{description}
-
-また, 各条件での計測結果は\tableref{table:ex}に示す通りである. 
+各条件での計測結果は\tableref{table:ex}に示す通りである. 
 
 \begin{table}[htb]
-  \caption{計測環境}
+  \caption{各実験の計測環境}
   \label{table:ex}
   \centering
-  \begin{tabular}{lrrrrr}
-    実験 & 気温 & 湿度 & \small 比エンタルピー & \small 設定温度 & 気候 \\
-     & [℃] & [\%] & [kJ/kg] & [℃] &  \\
+  \begin{tabular}{crrrrr}
+    \small 実験 & \small 計測日 & \small 平均気温 & \small 平均湿度 & \small h & \small 気候 \\[-1.5mm]
+     & & \small [℃] & \small [\%] & \small [kJ/kg] &  \\
     \hline \hline
-    Ex1 & 34.3 & 48.0 & 76.5 & 27.0 & 晴れ  \\
-    Ex2 & 32.9 & 58.9 & 80.9 & 27.0 & 曇り \\
-    Ex3 &  &  &  & 27.0 & 晴れ \\
-    Ex4 &  &  &  & 27.0 & 晴れ \\
+    1 & 7/13 & 34.3 & 48.0 & 76.5 & 晴れ  \\
+    2 & 7/15 & 32.9 & 58.9 & 80.9 & 曇り \\
+    3 & 7/31 &  &  &  & 晴れ \\
+    4 & 7/19 & 27.9 & 82.8 & 78.4 & 雨 \\
+    5 & 7/21 & 32.1 & 58.4 & 77.5 & 曇り/雨 \\
     \hline
   \end{tabular}
 \end{table}
@@ -274,22 +234,31 @@ PUHY-EP335DMG9を採用した (\figref{subfig:condensing_unit}).
 各計測実験での電力量との推移は\figref{fig1:compare_watering}に示す. 
 
 \section{考察}
-従量電気料金を25円として見積もった際の各実験における電気代は\tableref{table:electric_bill}に示す. 
+従量電気料金を25円として見積もった際の各実験における2時間でかかった電力量
+および電気代は\tableref{table:electric_bill}に示す. 
 
 \begin{table}[htb]
-  \caption{1時間あたりの電気料金}
+  \caption{2時間あたりの電力量および電気料金}
   \label{table:electric_bill}
   \centering
-  \begin{tabular}{lrr}
-    実験 & 消費電力 & 電気代[円] \\
+  \begin{tabular}{lrrr}
+     & 消費電力 & 電気代 & 減少率 \\[-1.5mm]
+     & \small [kWh] & \small [円] &  \small [\%] \\
     \hline \hline
-    Ex1 &  & 34 \\
-    Ex2 &  & 32 \\
-    Ex3 &  &  \\
-    Ex4 &  &  \\
+    実験1 & 4.24 & 118 & ― \\
+    実験2 & 1.66 & 42 & 60.8 \\
+    実験3 &  &  &  \\
+    実験4 & 2.88 & 72 & 32.1 \\
+    実験5 &  &  &  \\
     \hline
   \end{tabular}
 \end{table}
+
+
+（挿入したグラフ）に示す通り, 散水した場合は最大消費電力および運転時間が
+小さくなっている事が分かる. 
+実験1に比べた消費電力の減少率は, 実験2で約60\%, 実験4で約32\% 減少することが分かった. 
+これは外気環境が異なるため, 正当性の評価としては難しい面があるが,  
 
 \section{結論}
 本章では計測結果および考察を総括した結論を示す. 
