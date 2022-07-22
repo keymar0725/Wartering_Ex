@@ -101,6 +101,17 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
 ここで, 室外機吸い込み側空気, つまり外気温度が上昇すると, それに付随して凝縮温度
 が高くなる. それにより冷却能力は小さくなり, 圧縮機駆動の駆動力が大きくなるため, 
 成績係数が小さくなる. したがって, 同じ冷凍能力を出すためには消費電力が大きくなる.  
+さらに, 空冷機の冷却温度は外気温度マイナス10$^\circ$Cが目安とされており, 猛暑日になると
+室内が十分に冷えなくなるや高圧化防止のため運転が停止されるなどの問題もある. 
+こういった問題を防止するために, 自動散水機などが市販でも販売されている(\figref{fig:truble_cut}). 
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/trubleCut.jpg}
+  \caption{㈱CLIE 室外機散水装置 トラブルカット}
+  \label{fig:truble_cut}
+\end{figure}
+
 実際に外気温30℃, 相対湿度50\%の環境下で簡易的な散水をしながら電力量を計測した. 
 その対照実験の計測環境は\tableref{table:ex1}のとおりである. 
 \figref{fig1:compare_watering}に示すように, 実験2 (散水あり) の電力量は実験1 (散水なし) のそれと
@@ -112,7 +123,7 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
   \centering
   \begin{tabular}{lcccc}
      & 外気温 & 湿度 & 設定温度 & 気候 \\[-1.5mm]
-     & [℃] & [\%] & [℃] &  \\
+     & [$^\circ$C] & [\%] & [$^\circ$C] &  \\
     \hline \hline
     実験1 & 34.3 & 48.0 & 27.0 & 晴れ  \\
     実験2 & 32.9 & 58.9 & 27.0 & 曇り \\
@@ -169,6 +180,8 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
   \end{tabular}
 \end{table}
 
+
+
 また、計測時間は日中で最も気温が高くなる13時から15時までの2時間とし, 
 データログを取れるもの以外のパラメータは10分ごとに計測するとした. 
 
@@ -179,23 +192,23 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
 \figref{fig2:watering_sys}に示す通り, 屋上にある蛇口からホースと塩化ビニル管を結合させて
 室外機まで通し, 散水ノズルを用いて設置した. 
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
   \centering
-    \begin{minipage}[b]{0.45\linewidth}
+    \begin{minipage}[b]{\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{img/平面図.jpg}
+      \includegraphics[width=0.8\linewidth]{img/平面図.jpg}
       \subcaption{平面図}
       \label{subfig:平面図}
-    \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
+    \end{minipage}\\
+    \begin{minipage}[b]{\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{img/裏手立面図.jpg}
+      \includegraphics[width=0.8\linewidth]{img/裏手立面図.jpg}
       \subcaption{裏手立面図}
       \label{subfig:裏手立面図}
     \end{minipage}
   \caption{散水システム設計図}
   \label{fig2:watering_sys}
-\end{figure*}
+\end{figure}
 
 \subsection{計測}
 実験で計測するパラメータは以下の通りである. 
@@ -210,6 +223,7 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
   \item 室内系 (設定温度, 温湿度)
 \end{itemize}
 
+これらのパラメータを各実験で比較, 得られた電力量の差について考察していく. 
 
 \section{結果}\label{sec3}
 各条件での計測結果は\tableref{table:ex}に示す通りである. 
@@ -220,20 +234,20 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
   \centering
   \begin{tabular}{crrrrr}
     \small 実験 & \small 計測日 & \small 平均気温 & \small 平均湿度 & \small h & \small 気候 \\[-1.5mm]
-     & & \small [℃] & \small [\%] & \small [kJ/kg] &  \\
+     & & \small [$^\circ$C] & \small [\%] & \small [kJ/kg] &  \\
     \hline \hline
     1 & 7/13 & 34.3 & 48.0 & 76.5 & 晴れ  \\
     2 & 7/15 & 32.9 & 58.9 & 80.9 & 曇り \\
-    3 & 7/31 &  &  &  & 晴れ \\
+    3 & 7/○ &  &  &  & 晴れ \\
     4 & 7/19 & 27.9 & 82.8 & 78.4 & 雨 \\
     5 & 7/21 & 32.1 & 58.4 & 77.5 & 曇り/雨 \\
     \hline
   \end{tabular}
+    \small ※ h : 比エンタルピー
 \end{table}
 
 各計測実験での電力量との推移は\figref{fig1:compare_watering}に示す. 
 
-\section{考察}
 従量電気料金を25円として見積もった際の各実験における2時間でかかった電力量
 および電気代は\tableref{table:electric_bill}に示す. 
 
@@ -241,24 +255,65 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
   \caption{2時間あたりの電力量および電気料金}
   \label{table:electric_bill}
   \centering
-  \begin{tabular}{lrrr}
-     & 消費電力 & 電気代 & 減少率 \\[-1.5mm]
+  \begin{tabular}{crrr}
+    実験 & 消費電力 & 電気代 & 減少率 \\[-1.5mm]
      & \small [kWh] & \small [円] &  \small [\%] \\
     \hline \hline
-    実験1 & 4.24 & 118 & ― \\
-    実験2 & 1.66 & 42 & 60.8 \\
-    実験3 &  &  &  \\
-    実験4 & 2.88 & 72 & 32.1 \\
-    実験5 &  &  &  \\
+    1 & 4.24 & 118 & ― \\
+    2 & 1.66 & 42 & 60.8 \\
+    3 &  &  &  \\
+    4 & 2.88 & 72 & 32.1 \\
+    5 &  &  &  \\
     \hline
   \end{tabular}
 \end{table}
 
+% 仮挿入
+\begin{figure*}[htb]
+  \centering
+    \begin{minipage}[b]{0.46\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/ex1.png}
+      \subcaption{実験１（未挿入）}
+    \end{minipage}
+    \begin{minipage}[b]{0.46\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/ex1.png}
+      \subcaption{実験２（未挿入）}
+    \end{minipage}\\
+    \begin{minipage}[b]{0.46\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/ex1.png}
+      \subcaption{実験３（未挿入）}
+    \end{minipage}
+    \begin{minipage}[b]{0.46\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/ex1.png}
+      \subcaption{実験４（未挿入）}
+    \end{minipage}
+  \caption{電力グラフ（仮挿入）}
+  \label{fig2:ex_outputs}
+\end{figure*}
 
+\section{考察}
 （挿入したグラフ）に示す通り, 散水した場合は最大消費電力および運転時間が
 小さくなっている事が分かる. 
-実験1に比べた消費電力の減少率は, 実験2で約60\%, 実験4で約32\% 減少することが分かった. 
-これは外気環境が異なるため, 正当性の評価としては難しい面があるが,  
+\tableref{table:electric_bill}から, 実験1に比べた消費電力の減少率は, 実験2で約60\%, 
+実験4で約32\% 減少することが分かった. 
+これらの値は外気環境が異なるため, 正当性の評価としては難しい面があるが, 大まかな概算として
+電力量が減少していることが分かる. 
+
+また, 散水ありの場合でも, 手動で行った場合と自動機器を用いて散水した場合では
+〇〇\% 減少率に偏差が生まれた. これは散水量と散水範囲の違いも考慮できるが, 
+大部分は, 紙コップで散水したのに対し, ノズルによる散水は粒子の大きさが小さいために
+水の潜熱による凝縮器吸込温度の低下が効率良く行えたことによるものが大きいと考えられる. 
+今回手動の散水では約〇〇Lの水を1分間かけて散水するのを2回行ったが, 十分効果があるため, 
+機器の導入が難しい場合であっても有効な手段であると考える. 
+しかし, 散水は炎天下のなか行う場合が多いため, 担当者の負担と人的コストと考慮すると賢明な
+判断とは言い難い. 
+
+本州などの比較的平均気温の高い地域では, 導入におけるイニシャルコストは
+約〇〇ヶ月で償却できるであろう. 
 
 \section{結論}
 本章では計測結果および考察を総括した結論を示す. 
