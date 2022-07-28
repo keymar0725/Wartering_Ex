@@ -108,7 +108,7 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
 \begin{figure}[htb]
   \centering
   \includegraphics[width=0.8\linewidth]{img/trubleCut.jpg}
-  \caption{㈱CLIE 室外機散水装置 トラブルカット}
+  \caption{㈱CLIE 室外機散水装置 トラブルカット\cite{clie}}
   \label{fig:truble_cut}
 \end{figure}
 
@@ -148,14 +148,14 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
 本章では本研究で行った計測のための調査内容について説明する. 
 
 本研究で調査対象とした室外機はビル用マルチエアコンである三菱社 
-PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:hard}). 
+PUHY-EP335DMG9\cite{condensing_unit}を採用した (\figref{fig:condensing_unit}, \tableref{table:hard}). 
 この室外機に散水の有無など, 以下の4条件に分けて計測を行っていく.  
 
 \begin{description}
-  \item[  実験1 ] 散水なし
-  \item[  実験2 ] 散水あり (手動)
-  \item[  実験3 ] 散水あり (自作)
-  \item[  実験4 ] 散水なし (雨天)
+  \item[  実験1.1 ] 散水なし
+  \item[  実験1.2 ] 散水あり (手動)
+  \item[  実験1.3 ] 散水あり (自作)
+  \item[  実験1.4 ] 散水なし (雨天)
 \end{description}
 
 \begin{figure}[htb]
@@ -188,25 +188,22 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
 
 \subsection{自作散水システム}
 本節では, 計測実験の比較対象として自作する散水システムの概要について説明する. 
-
-\figref{fig2:watering_sys}に示す通り, 屋上にある蛇口からホースと塩化ビニル管を結合させて
-室外機まで通し, 散水ノズルを用いて設置した. 
+屋上にある蛇口からホースと塩化ビニル管を結合させて室外機まで通し, 散水ノズルを
+凝縮器側に左右3個ずつ計6個を設置した(\figref{fig2:watering_sys}). 
 
 \begin{figure}[htb]
   \centering
-    \begin{minipage}[b]{\linewidth}
+    \begin{minipage}[b]{0.45\linewidth}
       \centering
-      \includegraphics[width=0.8\linewidth]{img/plan_view.jpg}
-      \subcaption{平面図}
-      \label{subfig:plan_view}
-    \end{minipage}\\
-    \begin{minipage}[b]{\linewidth}
-      \centering
-      \includegraphics[width=0.8\linewidth]{img/back_elevation.jpg}
-      \subcaption{裏手立面図}
-      \label{subfig:back_elevation}
+      \includegraphics[width=\linewidth]{img/IMG_0146.jpg}
+      \subcaption{凝縮器側}
     \end{minipage}
-  \caption{散水システム設計図}
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/IMG_0142.jpg}
+      \subcaption{散水用ノズル}
+    \end{minipage}
+  \caption{散水システム}
   \label{fig2:watering_sys}
 \end{figure}
 
@@ -229,69 +226,99 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
 各条件での計測結果は\tableref{table:ex}に示す通りである. 
 
 \begin{table}[htb]
-  \caption{各実験の計測環境}
+  \caption{実験の計測環境及び結果}
   \label{table:ex}
   \centering
   \begin{tabular}{crrrrr}
-    \small 実験 & \small 計測日 & \small 平均気温 & \small 平均湿度 & \small h & \small 気候 \\[-1.5mm]
-     & & \small [$^\circ$C] & \small [\%] & \small [kJ/kg] &  \\
+    \small 実験 & \small 計測日 & \small 気温 & \small 湿度 & \small 気候 & \small 設定温度 \\[-1.5mm]
+     & & \small [$^\circ$C] & \small [\%] & & \small [$^\circ$C] \\
     \hline \hline
-    1 & 7/13 & 34.3 & 48.0 & 76.5 & 晴れ  \\
-    2 & 7/15 & 32.9 & 58.9 & 80.9 & 曇り \\
-    3 & 7/23 &  &  &  & 晴れ \\
-    4 & 7/19 & 27.9 & 82.8 & 78.4 & 雨 \\
-    5 & 7/21 & 32.1 & 58.4 & 77.5 & 曇り/雨 \\
+    1 & 7/13 & 34.3 & 48.0 & 晴れ & 26 - 27 \\
+    2 & 7/15 & 32.9 & 58.9 & 曇り & 27.0 \\
+    4 & 7/19 & 27.9 & 82.8 & 雨 & 27.0 \\
+    3 & 7/23 & 33.2 & 43.4 & 晴れ & 27.0 \\
+    5 & 7/21 & 32.1 & 58.4 & 曇り/雨 & 27.0 \\[2.5mm]
+    6 & 7/25 & 36.5 & 42.2 & 晴れ & 25.0 \\
+    7 & 7/26 & 37.5 & 41.0 & 晴れ & 25.0 \\
     \hline
   \end{tabular}
-    \small ※ h : 比エンタルピー\\※ 気温および湿度 : 10分ごとに計測した12回の平均値を参照
 \end{table}
+
+\begin{table}[htb]
+  \caption{2時間あたりの電力量およびその他比較指標}
+  \label{table:ex2}
+  \centering
+  \begin{tabular}{crrrrr}
+    \small 実験 &   \small 外気h & \small 消費電力 & \small 電気代 & \small 変化率\\[-1.5mm]
+    & \small [kJ/kg] & \small [kWh] & \small [円] & \small [\%] \\
+    \hline \hline
+    27℃ \\
+    \hline
+    1 & 76.5 & 4.24 & 118 & ― \\
+    2 & 80.9 & 1.66 & 42 & 35.6 \\
+    4 & 78.4 & 2.88 & 72 & 61.0 \\
+    3 & 66.2 & 0.72 & 18 & 15.3 \\
+    5 & 77.5 & 1.04 & 26 & 22.0 \\[2mm]
+    25℃ \\
+    \hline
+    6 & 78.5 & 3.12 & 80 & ― \\
+    7 & 80.6 & 4.45 & 112  & 140 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\linewidth]{img/fee_27.png}
+  \caption{電気料金比較 (実験グループ1)}
+  \label{fig:fee_27}
+\end{figure}
 
 各計測実験での電力量との推移は\figref{fig1:compare_watering}に示す. 
 
 従量電気料金を25円として見積もった際の各実験における2時間でかかった電力量
-および電気代は\tableref{table:electric_bill}に示す. 
+および電気代は\tableref{table:ex2}および\figref{fig:fee_27}に示す. 
 
-\begin{table}[htb]
-  \caption{2時間あたりの電力量および電気料金}
-  \label{table:electric_bill}
-  \centering
-  \begin{tabular}{crrr}
-    実験 & 消費電力 & 電気代 & 減少率 \\[-1.5mm]
-     & \small [kWh] & \small [円] &  \small [\%] \\
-    \hline \hline
-    1 & 4.24 & 118 & ― \\
-    2 & 1.66 & 42 & 60.8 \\
-    3 &  &  &  \\
-    4 & 2.88 & 72 & 32.1 \\
-    5 &  &  &  \\
-    \hline
-  \end{tabular}
-\end{table}
 
 % 仮挿入
 \begin{figure*}[htb]
   \centering
-    \begin{minipage}[b]{0.46\linewidth}
+    \begin{minipage}[b]{0.45\linewidth}
       \centering
       \includegraphics[width=\linewidth]{img/0713_power.png}
-      \subcaption{実験1（7/13）}
+      \subcaption{実験1（27℃ 散水なし）}
     \end{minipage}
-    \begin{minipage}[b]{0.46\linewidth}
+    \begin{minipage}[b]{0.45\linewidth}
       \centering
       \includegraphics[width=\linewidth]{img/0715_power.png}
-      \subcaption{実験2（7/15）}
+      \subcaption{実験2（27℃ 手動散水）}
     \end{minipage}\\
-    \begin{minipage}[b]{0.46\linewidth}
+    \begin{minipage}[b]{0.45\linewidth}
       \centering
       \includegraphics[width=\linewidth]{img/0719_power.png}
-      \subcaption{実験3（7/19）}
+      \subcaption{実験3（27℃ 雨天）}
     \end{minipage}
-    \begin{minipage}[b]{0.46\linewidth}
+    \begin{minipage}[b]{0.45\linewidth}
       \centering
       \includegraphics[width=\linewidth]{img/0721_power.png}
-      \subcaption{実験4（7/21）}
+      \subcaption{実験4（27℃ 手動散水）}
+    \end{minipage}\\
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/0723_power.png}
+      \subcaption{実験5（27℃ 手動散水）}
     \end{minipage}
-  \caption{電力グラフ（仮挿入）}
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/0725_power.png}
+      \subcaption{実験6（25℃ 散水なし）}
+    \end{minipage}\\
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{img/0726_power.png}
+      \subcaption{実験7（25℃ 自動散水）}
+    \end{minipage}
+  \caption{電力量推移}
   \label{fig2:ex_outputs}
 \end{figure*}
 
@@ -300,7 +327,7 @@ PUHY-EP335DMG9を採用した (\figref{fig:condensing_unit}, \tableref{table:har
 小さくなっている事が分かる. 
 \tableref{table:electric_bill}から, 実験1に比べた消費電力の減少率は, 実験2で約60\%, 
 実験4で約32\% 減少することが分かった. 
-これらの値は外気環境が異なるため, 正当性の評価としては難しい面があるが, 大まかな概算として
+これらの値は外気環境が異なるため, 正当性の評価としては難しい面があるが, 大まかな比較として
 電力量が減少していることが分かる. 
 
 また, 散水ありの場合でも, 手動で行った場合と自動機器を用いて散水した場合では
@@ -331,6 +358,15 @@ George's Web Sites, 大阪府-大阪市の気温に関する統計情報,
 \bibitem{temp_osaka3}
 A-PLAT 気候変動適応プラットフォーム, 気候変動の観測・予測データ, 大阪府観測データ, 
 \url{https://adaptation-platform.nies.go.jp/map/Osaka/index_past.html}\vspace{2mm}
+
+\bibitem{condensing_unit}
+三菱電機, 暮らしと設備の業務サイト WIN2K, ビル用マルチエアコン 室外ユニット PUHY-EP335DMG9, 
+\url{https://www.mitsubishielectric.co.jp/ldg/wink/ssl/displayProduct.do?pid=317186&ccd=2020121158}\vspace{2mm}
+
+\bibitem{clie}
+株式会社クリエ, 高圧カット防止室外機散水装置 トラブルカット, 
+\url{https://c-clie.shop-pro.jp/?pid=134166927}\vspace{2mm}
+
 \end{thebibliography}
 %
 %
