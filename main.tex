@@ -14,6 +14,7 @@
 \usepackage{enumerate}
 \usepackage{txfonts}
 \usepackage{url}
+\usepackage{pdflscape}
 % \usepackage{bm}
 \usepackage[subrefformat=parens]{subcaption}
 \captionsetup{compatibility=false}
@@ -23,7 +24,7 @@
 \newcommand{\tableref}[1]{Table.\ \ref{#1}}
 
 % 章番号の後調整
-\newcommand{\secref}[1]{\ref{#1}\hspace{0.2zw} 章}
+\newcommand{\secref}[1]{Section \ref{#1}\hspace{0.2zw}}
 % 節番号の後調整
 \newcommand{\subsecref}[1]{\ref{#1}\hspace{0.2zw} 節}
 
@@ -72,45 +73,37 @@ AMANE Nakamura, HIROTAKA Tsukada, NOBORU Aoki, ITSUKI Yoshikawa, HIROTO Sato, YU
     \label{fig1:temp_osaka}
 \end{figure}
  
-
-空調および冷凍分野において空気を冷やす原理として, "冷凍サイクル" が挙げられる. 
-\figref{fig1:cycle}に示す通り, 冷凍サイクルは 「圧縮」「凝縮」「膨張」「蒸発」 
-の4行程で構成されている. 冷凍サイクルにおいてモリエル線図(\figref{fig1:ph_r410}) 
-は使用する冷媒の状態変化に伴う運転状況の変化, 装置能力, 装置動力などの計算に
-よく使用される. 
-前述した気温上昇に伴い, 今後は空調機の利用機会が増えると予想できる. 
-一般に空調機には室内機と室外機に分類されており, 
-冷房時において, 室外機は圧縮と凝縮, 室内機は蒸発と膨張の行程をそれぞれ担っている. 
+気温上昇に伴う問題点として, 空調による電力量の増加が懸念される. 
+一般に空調機器は室内機と室外機に分類されており, 
+冷房時において, 室外機は圧縮・凝縮, 室内機は蒸発・膨張の行程をそれぞれ担っている. 
 室外機は高圧化した冷媒ガスを外気と熱交換させることで凝縮させ, 
 室内機では, 膨張した冷媒液を室内の空気と熱交換させて冷媒の潜熱を利用して冷却する. 
 
-\begin{figure}[htb]
-  \centering
-      \includegraphics[width=0.8\linewidth]{img/cycle-2.png}
-      \caption{冷凍サイクル}
-      \label{fig1:cycle}
-\end{figure}
-
-\begin{figure}[htb]
-    \centering
-        \includegraphics[width=\linewidth]{img/ph線図.jpg}
-        \caption{モリエル線図(p-h 線図) 冷媒:R410}
-        \label{fig1:ph_r410}
-\end{figure}
-
 ここで, 室外機吸い込み側空気, つまり外気温度が上昇すると, それに付随して凝縮温度
 が高くなる. それにより冷却能力は小さくなり, 圧縮機駆動の駆動力が大きくなるため, 
-成績係数が小さくなる. したがって, 同じ冷凍能力を出すためには消費電力が大きくなる.  
+結果的に成績係数が小さくなる. したがって, 同じ冷凍能力を出すためには消費電力が大きくなる.  
 さらに, 空冷機の冷却温度は外気温度マイナス10$^\circ$Cが目安とされており, 猛暑日になると
 室内が十分に冷えなくなるや高圧化防止のため運転が停止されるなどの問題もある. 
-こういった問題を防止するために, 自動散水機などが市販でも販売されている(\figref{fig:truble_cut}). 
 
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=0.8\linewidth]{img/trubleCut.jpg}
-  \caption{㈱CLIE 室外機散水装置 トラブルカット\cite{clie}}
-  \label{fig:truble_cut}
-\end{figure}
+これらの問題を防止するために自動散水機などの導入が挙げられる. 
+\cite{thesis3}によると, 散水装置を利用した食品メーカーの経済効果試算では使用電力量は
+約―7\%, 電気料金は約―13\%の削減率が見込める結果となっている. 
+
+% \begin{figure}[htb]
+%   \centering
+%     \begin{minipage}[b]{0.45\linewidth}
+%       \centering
+%       \includegraphics[width=\linewidth]{img/trubleCut.jpg}
+%       \subcaption{トラブルカット\cite{clie}}
+%     \end{minipage}
+%     \begin{minipage}[b]{0.45\linewidth}
+%       \centering
+%       \includegraphics[width=\linewidth]{img/E_mizuShower.png}
+%       \subcaption{Eミズシャワー\cite{daisen}}
+%     \end{minipage}
+%   \caption{室外機散水装置}
+%   \label{fig:watering_}
+% \end{figure}
 
 実際に外気温30℃, 相対湿度50\%の環境下で簡易的な散水をしながら電力量を計測した. 
 その対照実験の計測環境は\tableref{table:ex1}のとおりである. 
@@ -229,17 +222,18 @@ PUHY-EP335DMG9\cite{condensing_unit}を採用した (\figref{fig:condensing_unit
   \caption{実験の計測環境及び結果}
   \label{table:ex}
   \centering
-  \begin{tabular}{crrrrr}
-    \small 実験 & \small 計測日 & \small 気温 & \small 湿度 & \small 気候 & \small 設定温度 \\[-1.5mm]
-     & & \small [$^\circ$C] & \small [\%] & & \small [$^\circ$C] \\
+  \begin{tabular}{lrrrr}
+    \small 計測日 & \small 気温 & \small 湿度 & \small 気候 & \small 設定温度 \\[-1.5mm]
+     & \small [$^\circ$C] & \small [\%] & & \small [$^\circ$C] \\
     \hline \hline
-    1 & 7/13 & 34.3 & 48.0 & 晴れ & 26 - 27 \\
-    2 & 7/15 & 32.9 & 58.9 & 曇り & 27.0 \\
-    4 & 7/19 & 27.9 & 82.8 & 雨 & 27.0 \\
-    3 & 7/23 & 33.2 & 43.4 & 晴れ & 27.0 \\
-    5 & 7/21 & 32.1 & 58.4 & 曇り/雨 & 27.0 \\[2.5mm]
-    6 & 7/25 & 36.5 & 42.2 & 晴れ & 25.0 \\
-    7 & 7/26 & 37.5 & 41.0 & 晴れ & 25.0 \\
+    7/13 & 34.3 & 48.0 & 晴れ & 26 - 27 \\
+    7/15 & 32.9 & 58.9 & 曇り & 27.0 \\
+    7/19 & 27.9 & 82.8 & 雨 & 27.0 \\
+    7/23 & 33.2 & 43.4 & 晴れ & 27.0 \\
+    7/21 & 32.1 & 58.4 & 曇り/雨 & 27.0 \\[2.5mm]
+    7/25 & 36.5 & 42.2 & 晴れ & 25.0 \\
+    7/26 & 37.5 & 41.0 & 晴れ & 25.0 \\
+    7/29 &  &  & 晴れ & 25.0 \\
     \hline
   \end{tabular}
 \end{table}
@@ -248,28 +242,29 @@ PUHY-EP335DMG9\cite{condensing_unit}を採用した (\figref{fig:condensing_unit
   \caption{2時間あたりの電力量およびその他比較指標}
   \label{table:ex2}
   \centering
-  \begin{tabular}{crrrrr}
-    \small 実験 &   \small 外気h & \small 消費電力 & \small 電気代 & \small 変化率\\[-1.5mm]
+  \begin{tabular}{lrrrrr}
+    \small 計測日 &   \small 外気h & \small 消費電力 & \small 電気代 & \small 変化率\\[-1.5mm]
     & \small [kJ/kg] & \small [kWh] & \small [円] & \small [\%] \\
     \hline \hline
     27℃ \\
     \hline
-    1 & 76.5 & 4.24 & 118 & ― \\
-    2 & 80.9 & 1.66 & 42 & 35.6 \\
-    4 & 78.4 & 2.88 & 72 & 61.0 \\
-    3 & 66.2 & 0.72 & 18 & 15.3 \\
-    5 & 77.5 & 1.04 & 26 & 22.0 \\[2mm]
+    7/13 & 76.5 & 4.24 & 118 & ― \\
+    7/15 & 80.9 & 1.66 & 42 & 35.6 \\
+    7/19 & 78.4 & 2.88 & 72 & 61.0 \\
+    7/23 & 66.2 & 0.72 & 18 & 15.3 \\
+    7/21 & 77.5 & 1.04 & 26 & 22.0 \\[2mm]
     25℃ \\
     \hline
-    6 & 78.5 & 3.12 & 80 & ― \\
-    7 & 80.6 & 4.45 & 112  & 140 \\
+    7/25 & 78.5 & 3.12 & 80 & ― \\
+    7/26 & 80.6 & 4.45 & 112  & 140 \\
+    7/29 &  &  &   &  \\
     \hline
   \end{tabular}
 \end{table}
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\linewidth]{img/fee_27.png}
+  \includegraphics[width=0.8\linewidth]{img/fee_27.png}
   \caption{電気料金比較 (実験グループ1)}
   \label{fig:fee_27}
 \end{figure}
@@ -281,51 +276,82 @@ PUHY-EP335DMG9\cite{condensing_unit}を採用した (\figref{fig:condensing_unit
 
 
 % 仮挿入
-\begin{figure*}[htb]
-  \centering
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/0713_power.png}
-      \subcaption{実験1（27℃ 散水なし）}
-    \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/0715_power.png}
-      \subcaption{実験2（27℃ 手動散水）}
-    \end{minipage}\\
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/0719_power.png}
-      \subcaption{実験3（27℃ 雨天）}
-    \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/0721_power.png}
-      \subcaption{実験4（27℃ 手動散水）}
-    \end{minipage}\\
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/0723_power.png}
-      \subcaption{実験5（27℃ 手動散水）}
-    \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/0725_power.png}
-      \subcaption{実験6（25℃ 散水なし）}
-    \end{minipage}\\
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{img/0726_power.png}
-      \subcaption{実験7（25℃ 自動散水）}
-    \end{minipage}
-  \caption{電力量推移}
-  \label{fig2:ex_outputs}
-\end{figure*}
 
-\section{考察}
+% \begin{landscape}
+%   \begin{figure*}[h]
+%     \begin{subfigure}[b]{0.45\hsize}
+%       \centering
+%       \includegraphics[width=\linewidth]{img/0713_power.png}
+%       \caption{7/13（27℃ 散水なし）}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.45\hsize}
+%       \centering
+%       \includegraphics[width=\linewidth]{img/0715_power.png}
+%       \caption{7/15（27℃ 手動散水）}
+%     \end{subfigure}\\
+%     \begin{subfigure}[b]{0.45\hsize}
+%       \centering
+%       \includegraphics[width=\linewidth]{img/0719_power.png}
+%       \caption{7/19（27℃ 雨天）}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.45\hsize}
+%       \centering
+%       \includegraphics[width=\linewidth]{img/0721_power.png}
+%       \caption{7/21（27℃ 手動散水）}
+%     \end{subfigure}
+%     \caption{電力量推移と散水タイミング(1 of 3)}\label{fig2:ex_outputs_1/3}
+%   \end{figure*}
+  
+%   \begin{figure*}[h]
+%     \addtocounter{figure}{-1}
+%     \centering
+%     \begin{subfigure}[b]{0.42\linewidth}
+%       \addtocounter{subfigure}{4} % 最初のsubfigure数 15を加える
+%       \centering
+%       \includegraphics[width=\linewidth]{img/t_p/20220723.png}
+%       \caption{7/23（27℃ 手動散水）}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.42\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{img/t_p/20220725.png}
+%         \caption{7/25（25℃ 散水なし）}
+%     \end{subfigure}\\
+%     \begin{subfigure}[b]{0.42\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{img/t_p/20220726.png}
+%         \caption{7/26（25℃ 自動散水）}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.42\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{img/t_p/20220728.png}
+%         \caption{7/28（25℃ 自動散水）}
+%     \end{subfigure}
+%     \caption{電力量推移と散水タイミング(2 of 3)}\label{fig2:ex_outputs_2/3}
+%   \end{figure*}
+  
+%   \begin{figure*}[h]
+%     \addtocounter{figure}{-1}
+%     \centering
+%     \begin{subfigure}[b]{0.45\linewidth}
+%       \addtocounter{subfigure}{8} % 最初のsubfigure数
+%       \centering
+%       \includegraphics[width=\linewidth]{img/t_p/20220729.png}
+%       \caption{7/29（25℃ 自動散水）}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.45\linewidth}
+%       \centering
+%       \includegraphics[width=\linewidth]{img/t_p/20220803.png}
+%       \caption{8/3（25℃ 自動散水）}
+%     \end{subfigure}
+%     \caption{電力量推移と散水タイミング(3 of 3)}\label{fig2:ex_outputs_3/3}
+%   \end{figure*}
+% \end{landscape}
+
+
+\section{考察}\label{sec4}
 （挿入したグラフ）に示す通り, 散水した場合は最大消費電力および運転時間が
 小さくなっている事が分かる. 
-\tableref{table:electric_bill}から, 実験1に比べた消費電力の減少率は, 実験2で約60\%, 
+\figref{fig:fee_27}から, 実験1に比べた消費電力の減少率は, 実験2で約60\%, 
 実験4で約32\% 減少することが分かった. 
 これらの値は外気環境が異なるため, 正当性の評価としては難しい面があるが, 大まかな比較として
 電力量が減少していることが分かる. 
@@ -342,8 +368,29 @@ PUHY-EP335DMG9\cite{condensing_unit}を採用した (\figref{fig:condensing_unit
 本州などの比較的平均気温の高い地域では, 導入におけるイニシャルコストは
 約〇〇ヶ月で償却できるであろう. 
 
-\section{結論}
-本章では計測結果および考察を総括した結論を示す. 
+
+
+\subsection{グラフによる考察}
+\figref{}に示すように散水を停止した時間に好成績を収めている. これはフィンに付着した水滴
+が蒸発した潜熱によるもの、或いはファンが吸い込んだ内側の水滴が蒸発したためであると考察する. 
+ここで, 1分間の散水量は約450mlであり
+
+一見, 一貫性がなく見えるが散水タイミングと圧縮機の運転ピークの始まりと終わりのタイミングに
+相関あるように見受けられる. これは散水タイミングと合わせると潜熱を使い切った状態である. 
+
+
+\section{結論と今後の課題}
+本章では計測結果および\secref{sec4}からの考察を総括した結論を示す. 
+
+雨天時や長時間散水の計測結果から, 継続的な散水はフィンに水滴が付着することにより熱交換が阻害されることがわかった. 
+また, 水滴の蒸発速度はその半径に概ね比例する. 
+これらのことから, 散水時間を断続的にする, 散水粒子の半径を小さくする, 散水角度など
+による散水方法の工夫が必要である. 
+また, 散水時間を短くすると蒸発速度が速くなるので散水回数の考慮が必要であるが, 
+今回の計測装置の条件では15分に1回程度が適正であった. 
+
+\subsection{今後の課題}
+\cite{thesis3} スケール対策
 
 %参考文献
 \begin{thebibliography}{99}
@@ -363,9 +410,26 @@ A-PLAT 気候変動適応プラットフォーム, 気候変動の観測・予�
 三菱電機, 暮らしと設備の業務サイト WIN2K, ビル用マルチエアコン 室外ユニット PUHY-EP335DMG9, 
 \url{https://www.mitsubishielectric.co.jp/ldg/wink/ssl/displayProduct.do?pid=317186&ccd=2020121158}\vspace{2mm}
 
-\bibitem{clie}
-株式会社クリエ, 高圧カット防止室外機散水装置 トラブルカット, 
-\url{https://c-clie.shop-pro.jp/?pid=134166927}\vspace{2mm}
+% \bibitem{clie}
+% 株式会社クリエ, 高圧カット防止室外機散水装置 トラブルカット, 
+% \url{https://c-clie.shop-pro.jp/?pid=134166927}\vspace{2mm}
+
+% \bibitem{daisen}
+% ダイセン・メンブレン・ システムズ株式会社, 
+% 室外機向け散水システム "E mizu Shower System", 
+% \url{https://daicen.com/products/kankyo/emizushower.html}\vspace{2mm}
+
+\bibitem{thesis2}
+"エアコン室外機への散水による省エネ効果の実験結果", 
+総合技術センター計測・制御技術分野 飯田 仁\vspace{2mm}
+
+\bibitem{夏の節電}
+資源エネルギー庁, "2.夏の節電生活の基本を知っておく"\vspace{2mm}
+
+\bibitem{thesis3}
+"空調室外機散水システム（Eミズシャワー）による節電・CO2 削減", 
+綿部智一, 中塚修志, 
+ダイセン・メンブレン・システムズ株式会社技術開発センター\vspace{2mm}
 
 \end{thebibliography}
 %
