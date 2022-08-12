@@ -68,8 +68,8 @@
    {1.5\Cvs \@plus.5\Cvs \@minus.2\Cvs}%
    {.5\Cvs \@plus.3\Cvs}%
    {\reset@font\large\bfseries}}%2019年変更:sectionフォントをlarge[12pt]に設定
-\renewcommand{\thesection}{\arabic{section}.}
-\renewcommand{\thesubsection}{\thesection \arabic{subsection}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
 %%% 図番，表番%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,7 +97,7 @@
   \gdef\@title{}%
   \gdef\@etitle{}%
   \gdef\@lab{}%
-  \gdef\@abst{}%
+  % \gdef\@abst{}%
   \gdef\@name{}%
   \gdef\@ename{}%
 }%
@@ -117,18 +117,18 @@
     {\fontsize{12pt}{20pt}\selectfont \@ename \par}
     \vspace*{1em}%
   \end{center}%
-  \begin{center}
-   \begin{minipage}{160mm}
-    \fontsize{9pt}{0pt}\selectfont
-    {Abstract : \@abst \par}
-   \end{minipage}
-  \end{center}
+  % % \begin{center}
+  % %  \begin{minipage}{160mm}
+  % %   \fontsize{9pt}{0pt}\selectfont
+  % %   {Abstract : \@abst \par}
+  % %  \end{minipage}
+  % \end{center}
   \vskip 1em%
   ]
 }%
 \def\title#1{\long\gdef\@title{#1}}%
 \def\etitle#1{\long\gdef\@etitle{#1}}%
-\def\abst#1{\long\gdef\@abst{#1}}%
+% \def\abst#1{\long\gdef\@abst{#1}}%
 \def\name#1{\long\gdef\@name{#1}}%
 \def\ename#1{\long\gdef\@ename{#1}}%
 
